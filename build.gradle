@@ -209,8 +209,8 @@ checkstyle {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "Amherst College Trellis Repository"
-        property "sonar.projectKey", "edu.amherst.acdc:trellis"
+        property "sonar.projectName", "Amherst College Trellis Repository API"
+        property "sonar.projectKey", "edu.amherst.acdc:trellis-api"
     }
 }
 
