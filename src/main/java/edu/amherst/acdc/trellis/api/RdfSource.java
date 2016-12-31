@@ -20,6 +20,7 @@ package edu.amherst.acdc.trellis.api;
  */
 public interface RdfSource extends Resource {
 
+    @Override
     default Boolean isRdfSource() {
         return true;
     }

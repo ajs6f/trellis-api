@@ -20,6 +20,7 @@ package edu.amherst.acdc.trellis.api;
  */
 public interface FixityResource extends Container {
 
+    @Override
     default Boolean isFixityResource() {
         return true;
     }

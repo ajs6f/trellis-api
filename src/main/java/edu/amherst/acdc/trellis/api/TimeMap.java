@@ -20,6 +20,7 @@ package edu.amherst.acdc.trellis.api;
  */
 public interface TimeMap extends Container {
 
+    @Override
     default Boolean isTimeMap() {
         return true;
     }

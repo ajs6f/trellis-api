@@ -20,6 +20,7 @@ package edu.amherst.acdc.trellis.api;
  */
 public interface Container extends RdfSource {
 
+    @Override
     default Boolean isContainer() {
         return true;
     }
