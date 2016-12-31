@@ -24,7 +24,7 @@ import org.apache.commons.rdf.api.IRI;
 /**
  * @author acoburn
  */
-interface Event {
+public interface Event {
 
     /**
      * Get an identifier for this event

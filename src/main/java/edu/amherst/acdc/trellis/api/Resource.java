@@ -29,7 +29,7 @@ import org.apache.commons.rdf.api.Triple;
 /**
  * @author acoburn
  */
-interface Resource {
+public interface Resource {
 
     /**
      * Get an identifier for this resource
@@ -84,6 +84,7 @@ interface Resource {
     /**
      * Retrieve the RDF Triples for a resource
      * @param category The category of triples to retrieve
+     * @param <T> the triple category
      * @return the RDF triples
      */
     <T extends TripleCategory> Stream<Triple> getTriples(Collection<T> category);
@@ -91,6 +92,7 @@ interface Resource {
     /**
      * Retrieve the RDF Triples for a resource
      * @param category The category of triples to retrieve
+     * @param <T> the triple category
      * @return the RDF triples
      */
     default <T extends TripleCategory> Stream<Triple> getTriples(T category) {
@@ -152,6 +154,7 @@ interface Resource {
     /**
      * Get the acl:accessControl IRI, if one exists
      * @return an IRI used for access control
+     */
     Optional<IRI> getAccessControl();
 
     /**

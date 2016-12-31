@@ -24,7 +24,7 @@ import org.apache.commons.rdf.api.IRI;
 /**
  * @author acoburn
  */
-interface Session {
+public interface Session {
 
     /**
      * Get a session identifier

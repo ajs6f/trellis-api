@@ -18,7 +18,7 @@ package edu.amherst.acdc.trellis.api;
 /**
  * @author acoburn
  */
-interface Container extends RdfSource {
+public interface Container extends RdfSource {
 
     default Boolean isContainer() {
         return true;

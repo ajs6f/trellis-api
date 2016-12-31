@@ -18,7 +18,7 @@ package edu.amherst.acdc.trellis.api;
 /**
  * @author acoburn
  */
-interface RdfSource extends Resource {
+public interface RdfSource extends Resource {
 
     default Boolean isRdfSource() {
         return true;

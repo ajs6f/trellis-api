@@ -18,4 +18,4 @@ package edu.amherst.acdc.trellis.api;
 /**
  * @author acoburn
  */
-interface TripleCategory {}
+public interface TripleCategory {}

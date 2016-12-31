@@ -25,7 +25,7 @@ import org.apache.commons.rdf.api.IRI;
  *
  * @author acoburn
  */
-interface Memento {
+public interface Memento {
 
     /**
      * Get the IRI for this Memento

@@ -21,7 +21,7 @@ import java.util.Optional;
 /**
  * @author acoburn
  */
-interface NonRdfSource extends Resource {
+public interface NonRdfSource extends Resource {
 
     /**
      * Retrieve the content of the NonRdfSource

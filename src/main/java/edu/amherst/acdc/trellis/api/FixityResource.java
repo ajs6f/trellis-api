@@ -18,7 +18,7 @@ package edu.amherst.acdc.trellis.api;
 /**
  * @author acoburn
  */
-interface FixityResource extends Container {
+public interface FixityResource extends Container {
 
     default Boolean isFixityResource() {
         return true;

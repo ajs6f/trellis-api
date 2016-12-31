@@ -18,7 +18,7 @@ package edu.amherst.acdc.trellis.api;
 /**
  * @author acoburn
  */
-interface TimeMap extends Container {
+public interface TimeMap extends Container {
 
     default Boolean isTimeMap() {
         return true;
