@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="trellis-api-${project.version}">
+  <feature name="trellis-api" version="${project.version}">
+    <details>Installs the Trellis API bundle</details>
+
+    <bundle dependency="true">mvn:org.apache.commons/commons-rdf/${commonsRdfVersion}</bundle>
+    <bundle>mvn:edu.amherst.acdc/trellis-api/${project.version}</bundle>
+  </feature>
+</features>

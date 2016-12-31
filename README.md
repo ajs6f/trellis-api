@@ -1,2 +1,3 @@
-# trellis
-An application that implements the Fedora API
+# trellis-api
+
+The core APIs for a Trellis-based repository
