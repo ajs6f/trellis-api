@@ -53,4 +53,10 @@ public interface NonRdfSource extends Resource {
      * @param filename the original filename
      */
     void setFileName(final String filename);
+
+    /**
+     * Get the checksum digest for the given algorithm
+     * @return a digest value if one exists for the provided algorithm
+     */
+    Optional<String> getDigest(final String algorithm);
 }
