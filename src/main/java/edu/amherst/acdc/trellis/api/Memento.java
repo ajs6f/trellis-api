@@ -20,6 +20,9 @@ import java.time.Instant;
 import org.apache.commons.rdf.api.IRI;
 
 /**
+ * This interface provides links to Memento resources, which could be
+ * included in a TimeMap.
+ *
  * @author acoburn
  */
 interface Memento {
