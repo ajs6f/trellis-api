@@ -20,7 +20,7 @@ import java.time.Instant;
 /**
  * @author acoburn
  */
-public interface FixityResult {
+public interface Fixity {
 
     /**
      * Retrieve the dateTime when the digest was computed
