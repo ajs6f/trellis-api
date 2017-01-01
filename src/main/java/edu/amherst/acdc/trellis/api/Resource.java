@@ -133,6 +133,14 @@ public interface Resource {
     }
 
     /**
+     * Test whether this resource is an LDP NonRdfSource
+     * @return whether the resource is a Non-RDF resource
+     */
+    default Boolean isNonRdfSource() {
+        return false;
+    }
+
+    /**
      * Test whether this resource is a Fixity resource
      * @return whether the resource is a Fixity resource
      */
