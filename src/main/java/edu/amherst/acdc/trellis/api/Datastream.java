@@ -15,19 +15,21 @@
  */
 package edu.amherst.acdc.trellis.api;
 
-import java.io.InputStream;
+import java.time.Instant;
 import java.util.Optional;
+
+import org.apache.commons.rdf.api.IRI;
 
 /**
  * @author acoburn
  */
-public interface NonRdfSource extends Resource {
+public interface Datastream {
 
     /**
-     * Retrieve the content of the NonRdfSource
+     * Retrieve an IRI identifying the location of the datastream
      * @return the resource content
      */
-    InputStream getContent();
+    IRI getIdentifier();
 
     /**
      * Retrieve the mime-type of the resource, if one was specified
@@ -42,22 +44,21 @@ public interface NonRdfSource extends Resource {
     Optional<String> getFileName();
 
     /**
-     * Set the content of the resource
-     * @param content the resource content
-     * @param mimeType the mime type of the resource
-     */
-    void setContent(final InputStream content, final String mimeType);
-
-    /**
-     * Set the original filename for the resource
-     * @param filename the original filename
-     */
-    void setFileName(final String filename);
-
-    /**
      * Get the checksum digest for the given algorithm
      * @param algorithm the algorithm
      * @return a digest value if one exists for the provided algorithm
      */
     Optional<String> getDigest(final String algorithm);
+
+    /**
+     * Retrieve the created date of the datastream
+     * @return the created date
+     */
+    Instant getCreated();
+
+    /**
+     * Retrieve the last-modified date of the datastream
+     * @return the last-modified date
+     */
+    Instant getLastModified();
 }

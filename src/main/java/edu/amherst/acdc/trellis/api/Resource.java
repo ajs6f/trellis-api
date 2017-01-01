@@ -16,6 +16,7 @@
 package edu.amherst.acdc.trellis.api;
 
 import static java.util.Collections.singleton;
+import static java.util.Optional.empty;
 
 import java.time.Instant;
 import java.util.Collection;
@@ -97,6 +98,14 @@ public interface Resource {
      */
     default <T extends TripleCategory> Stream<Triple> getTriples(T category) {
         return getTriples(singleton(category));
+    }
+
+    /**
+     * Retrieve a datastream for this resouce, if it is a LDP-NR
+     * @return the datastream
+     */
+    default Optional<Datastream> getDatastream() {
+        return empty();
     }
 
     /**
