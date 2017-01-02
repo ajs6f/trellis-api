@@ -29,7 +29,8 @@ import org.apache.commons.rdf.api.IRI;
  * An ACL resource may contain multiple acl:Authorization sections. In an LDP context, this may be represented with
  * ldp:contains triples. Another common pattern is to refer to the acl:Authorization sections with blank nodes.
  *
- * @see <a href="https://www.w3.org/wiki/WebAccessControl">W3C WebAccessControl</a> and <a href="https://github.com/solid/web-access-control-spec">Solid WebAC specification</a>
+ * @see <a href="https://www.w3.org/wiki/WebAccessControl">W3C WebAccessControl</a>
+ * and <a href="https://github.com/solid/web-access-control-spec">Solid WebAC specification</a>
  *
  * @author acoburn
  */
