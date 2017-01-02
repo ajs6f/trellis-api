@@ -55,6 +55,12 @@ public interface Datastream {
     Optional<String> getFileName();
 
     /**
+     * Retrieve the size of the datastream, if known
+     * @return the datastream size
+     */
+    Optional<Long> getSize();
+
+    /**
      * Get the checksum digest for the given algorithm
      * @param algorithm the algorithm
      * @return a digest value if one exists for the provided algorithm
