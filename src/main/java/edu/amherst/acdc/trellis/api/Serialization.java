@@ -16,6 +16,8 @@
 package edu.amherst.acdc.trellis.api;
 
 /**
+ * An interface representing the serialization formats used for RDF resources.
+ *
  * @author acoburn
  */
 public interface Serialization {}

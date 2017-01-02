@@ -30,10 +30,15 @@ import org.apache.commons.rdf.api.Triple;
 /**
  * The central abstraction for a trellis-based repository.
  *
+ * @see <a href="http://fedora.info/spec/">Fedora API Specification</a>
+ *
  * @author acoburn
  */
 public interface Resource {
 
+    /**
+     * The category of triples used when producing RDF.
+     */
     interface TripleCategory {}
 
     /**

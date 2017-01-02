@@ -22,6 +22,8 @@ package edu.amherst.acdc.trellis.api;
  * extended, but these are the minimal contexts used to support the Fedora API
  * specification.
  *
+ * @see <a href="http://fedora.info/spec/">Fedora API Specification</a>
+ *
  * @author acoburn
  */
 public enum Context implements Resource.TripleCategory {
