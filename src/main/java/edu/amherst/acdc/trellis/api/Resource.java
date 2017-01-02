@@ -28,6 +28,8 @@ import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.Triple;
 
 /**
+ * The central abstraction for a trellis-based repository.
+ *
  * @author acoburn
  */
 public interface Resource {
