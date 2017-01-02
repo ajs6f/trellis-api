@@ -42,5 +42,4 @@ public enum RdfContext implements TripleCategory {
 
     /* Memento Timemap properties */
     MEMENTO_TIMEMAP
-
 }

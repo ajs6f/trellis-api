@@ -50,19 +50,25 @@ public interface Resource {
      * If a separate description exists for this resource, retrieve the IRI for it
      * @return the IRI for the description
      */
-    Optional<IRI> getDescription();
+    default Optional<IRI> getDescription() {
+        return empty();
+    }
 
     /**
      * Get the IRI for the described resource, if one exists
      * @return the IRI for the described resource
      */
-    Optional<IRI> getDescribedResource();
+    default Optional<IRI> getDescribedResource() {
+        return empty();
+    }
 
     /**
      * Retrieve the IRI for this resource's timemap, if one exists
      * @return the IRI for the resource's timemap
      */
-    Optional<IRI> getTimeMapResource();
+    default Optional<IRI> getTimeMapResource() {
+        return empty();
+    }
 
     /**
      * Retrieve the parent resource, if it exists
@@ -137,22 +143,6 @@ public interface Resource {
      * @return whether the resource is a Non-RDF resource
      */
     default Boolean isNonRdfSource() {
-        return false;
-    }
-
-    /**
-     * Test whether this resource is a Fixity resource
-     * @return whether the resource is a Fixity resource
-     */
-    default Boolean isFixityResource() {
-        return false;
-    }
-
-    /**
-     * Test whether this resource is a Memento Time Map
-     * @return whether the resource is a Memento Time Map
-     */
-    default Boolean isTimeMap() {
         return false;
     }
 
