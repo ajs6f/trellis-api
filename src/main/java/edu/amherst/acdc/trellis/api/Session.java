@@ -46,6 +46,12 @@ public interface Session {
     List<IRI> getGroupIdentifiers();
 
     /**
+     * Get the delegated user, if one exists
+     * @return the delegated user
+     */
+    Optional<IRI> getDelegatedUserIdentifier();
+
+    /**
      * Get the date when the session was created.
      * @return the creation date
      */
