@@ -22,6 +22,11 @@ import java.util.Optional;
 import org.apache.commons.rdf.api.IRI;
 
 /**
+ * This represents the data for a public repository event, as defined by the Fedora API specification.
+ * These events must be serialized as a conforming ActivityStream.
+ *
+ * For more information, please refer to: https://www.w3.org/TR/activitystreams-core/
+ *
  * @author acoburn
  */
 public interface Event {

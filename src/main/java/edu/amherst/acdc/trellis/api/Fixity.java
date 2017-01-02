@@ -25,8 +25,6 @@ import java.time.Instant;
  */
 public interface Fixity {
 
-    interface Algorithm {}
-
     /**
      * Retrieve the dateTime when the digest was computed
      * @return the moment when the digest was run
@@ -35,10 +33,9 @@ public interface Fixity {
 
     /**
      * Retrieve the algorithm used to compute the digest
-     * @param <T> the algorithm type
      * @return the algorithm name
      */
-    <T extends Algorithm> T getAlgorithm();
+    String getAlgorithm();
 
     /**
      * Retrieve the value of the checksum digest
