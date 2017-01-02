@@ -17,6 +17,7 @@ package edu.amherst.acdc.trellis.api;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.rdf.api.IRI;
@@ -37,6 +38,12 @@ public interface Session {
      * @return an identifier for a User
      */
     IRI getUserIdentifier();
+
+    /**
+     * Get additional (e.g. group) identifiers for this session
+     * @return any additional user/group identifiers
+     */
+    List<IRI> getGroupIdentifiers();
 
     /**
      * Get the date when the session was created.
