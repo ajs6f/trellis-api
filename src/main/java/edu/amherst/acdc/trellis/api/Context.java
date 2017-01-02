@@ -18,7 +18,7 @@ package edu.amherst.acdc.trellis.api;
 /**
  * @author acoburn
  */
-public enum RdfContext implements TripleCategory {
+public enum Context implements TripleCategory {
     /* User-managed properties */
     USER_MANAGED,
 
