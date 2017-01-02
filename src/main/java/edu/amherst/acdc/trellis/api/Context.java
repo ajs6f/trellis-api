@@ -16,9 +16,15 @@
 package edu.amherst.acdc.trellis.api;
 
 /**
+ * Repository resources are described using RDF triples, which are organized into
+ * distinct categories. In an LDP context, the category of RDF triples returned
+ * may be controlled with Prefer headers. The RDF Contexts defined here may be
+ * extended, but these are the minimal contexts used to support the Fedora API
+ * specification.
+ *
  * @author acoburn
  */
-public enum Context implements TripleCategory {
+public enum Context implements Resource.TripleCategory {
     /* User-managed properties */
     USER_MANAGED,
 

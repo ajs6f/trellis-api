@@ -21,6 +21,17 @@ import java.util.Optional;
 import org.apache.commons.rdf.api.IRI;
 
 /**
+ * The LDP specification divides resources into two categories: RDF resources and
+ * non-RDF resources. Non-RDF resources also have a corresponding RDF description.
+ *
+ * For those resources that are non-RDF resources (LDP-NR), the base Resource interface
+ * will make a Datastream object available. The datastream content is not accessed directly
+ * through the Datastream interface, but rather an identifier is returned, which may
+ * be resolved by an external system.
+ *
+ * The Datastream interface also provides access methods for the MimeType, original filename,
+ * and checksum digest values.
+ *
  * @author acoburn
  */
 public interface Datastream {

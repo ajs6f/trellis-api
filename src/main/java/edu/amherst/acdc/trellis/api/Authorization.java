@@ -20,6 +20,18 @@ import java.util.Collection;
 import org.apache.commons.rdf.api.IRI;
 
 /**
+ * This interface provides access to data defined in an WebAC Authorization graph. Access to a resource can be
+ * controlled via WebAccessControl, an RDF-based access control system. A resource can define an ACL resource
+ * via the Link header, using rel=acl. It can also point to an ACL resource using a triple in the resource's own
+ * RDF graph via acl:accessControl. Absent an acl:accessControl triple, the parent resource is checked, up to the
+ * server's root resource.
+ *
+ * An ACL resource may contain multiple acl:Authorization sections. In an LDP context, this may be represented with
+ * ldp:contains triples. Another common pattern is to refer to the acl:Authorization sections with blank nodes.
+ *
+ * For more information, please refer to https://www.w3.org/wiki/WebAccessControl
+ * and https://github.com/solid/web-access-control-spec
+ *
  * @author acoburn
  */
 public interface Authorization {

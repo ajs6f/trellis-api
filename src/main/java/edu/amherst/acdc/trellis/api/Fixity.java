@@ -18,9 +18,14 @@ package edu.amherst.acdc.trellis.api;
 import java.time.Instant;
 
 /**
+ * This interface represents the result of a checksum performed on a non-RDF resource at
+ * some time, using some algorithm.
+ *
  * @author acoburn
  */
 public interface Fixity {
+
+    interface Algorithm {}
 
     /**
      * Retrieve the dateTime when the digest was computed
@@ -30,9 +35,10 @@ public interface Fixity {
 
     /**
      * Retrieve the algorithm used to compute the digest
+     * @param <T> the algorithm type
      * @return the algorithm name
      */
-    String getAlgorithm();
+    <T extends Algorithm> T getAlgorithm();
 
     /**
      * Retrieve the value of the checksum digest

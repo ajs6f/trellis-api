@@ -32,6 +32,8 @@ import org.apache.commons.rdf.api.Triple;
  */
 public interface Resource {
 
+    interface TripleCategory {}
+
     /**
      * Get an identifier for this resource
      * @return the identifier
