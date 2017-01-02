@@ -16,6 +16,8 @@
 package edu.amherst.acdc.trellis.api;
 
 /**
+ * The required serialization formats supported by the repository.
+ *
  * @author acoburn
  */
 public enum Format implements Serialization {

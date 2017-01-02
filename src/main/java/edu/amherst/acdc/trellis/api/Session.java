@@ -23,6 +23,14 @@ import java.util.Optional;
 import org.apache.commons.rdf.api.IRI;
 
 /**
+ * This interface represents a user's session when interacting with a repository resource.
+ * All changes made during the session will be persisted to durable storage with the save()
+ * method.
+ *
+ * A session may or may not expire. If an expriation has been set, that expiry may be extended.
+ *
+ * Users, groups and delegates are represented as IRIs.
+ *
  * @author acoburn
  */
 public interface Session {

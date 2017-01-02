@@ -21,7 +21,9 @@ import org.apache.commons.rdf.api.IRI;
 
 /**
  * This interface provides links to Memento resources, which could be
- * included in a TimeMap.
+ * included in a TimeMap or in Link headers.
+ *
+ * For more information, please refer to the Memento RFC at https://tools.ietf.org/html/rfc7089.
  *
  * @author acoburn
  */
