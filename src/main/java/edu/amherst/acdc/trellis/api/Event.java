@@ -16,7 +16,7 @@
 package edu.amherst.acdc.trellis.api;
 
 import java.time.Instant;
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 
 import org.apache.commons.rdf.api.IRI;
@@ -36,7 +36,7 @@ public interface Event {
      * Get the Agents associated with this event
      * @return the agents associated with this event
      */
-    List<IRI> getAgents();
+    Collection<IRI> getAgents();
 
     /**
      * Get the resource identifier, if one exists
@@ -48,13 +48,13 @@ public interface Event {
      * Get types for this event
      * @return the types for this event
      */
-    List<IRI> getTypes();
+    Collection<IRI> getTypes();
 
     /**
      * Get the types for the target resource
      * @return the types for the target resource
      */
-    List<IRI> getTargetTypes();
+    Collection<IRI> getTargetTypes();
 
     /**
      * Get the created date for this event
