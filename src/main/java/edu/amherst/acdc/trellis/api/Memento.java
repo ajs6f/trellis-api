@@ -34,13 +34,13 @@ public interface Memento {
     IRI getIdentifier();
 
     /**
-     * Get the date-time corresponding to when the temporal interval covered by this Memento begins
+     * Get the datetime corresponding to when the temporal interval covered by this Memento begins
      * @return the from value for this Memento
      */
     Instant getFrom();
 
     /**
-     * Get the date-time corresponding to when the temporal interval covered by this Memento ends
+     * Get the datetime corresponding to when the temporal interval covered by this Memento ends
      * @return the until value for this Memento
      */
     Instant getUntil();

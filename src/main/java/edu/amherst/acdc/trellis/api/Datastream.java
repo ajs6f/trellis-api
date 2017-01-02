@@ -48,7 +48,7 @@ public interface Datastream {
      * @param algorithm the algorithm
      * @return a digest value if one exists for the provided algorithm
      */
-    Optional<String> getDigest(final String algorithm);
+    Optional<String> getDigest(String algorithm);
 
     /**
      * Retrieve the created date of the datastream
@@ -60,5 +60,5 @@ public interface Datastream {
      * Retrieve the last-modified date of the datastream
      * @return the last-modified date
      */
-    Instant getLastModified();
+    Instant getModified();
 }

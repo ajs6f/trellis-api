@@ -42,7 +42,7 @@ public interface Event {
      * Get the resource identifier, if one exists
      * @return an identifier for the target resource
      */
-    Optional<IRI> getTargetIdentifier();
+    Optional<IRI> getTarget();
 
     /**
      * Get types for this event

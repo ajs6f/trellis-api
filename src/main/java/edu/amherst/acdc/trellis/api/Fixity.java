@@ -26,7 +26,7 @@ public interface Fixity {
      * Retrieve the dateTime when the digest was computed
      * @return the moment when the digest was run
      */
-    Instant getInstant();
+    Instant getDateTime();
 
     /**
      * Retrieve the algorithm used to compute the digest

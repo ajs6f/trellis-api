@@ -37,19 +37,19 @@ public interface Session {
      * Get a user identifier
      * @return an identifier for a User
      */
-    IRI getUserIdentifier();
+    IRI getUser();
 
     /**
      * Get additional (e.g. group) identifiers for this session
      * @return any additional user/group identifiers
      */
-    Collection<IRI> getGroupIdentifiers();
+    Collection<IRI> getGroups();
 
     /**
-     * Get the delegated user, if one exists
-     * @return the delegated user
+     * Get the user that delegated access, if one exists
+     * @return the user who delegated access
      */
-    Optional<IRI> getDelegatedUserIdentifier();
+    Optional<IRI> getDelegatedBy();
 
     /**
      * Get the date when the session was created.

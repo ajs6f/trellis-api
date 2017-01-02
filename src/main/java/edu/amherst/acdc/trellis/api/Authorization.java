@@ -25,6 +25,12 @@ import org.apache.commons.rdf.api.IRI;
 public interface Authorization {
 
     /**
+     * Retrieve the identifier for this Authorization
+     * @return the identifier
+     */
+    IRI getIdentifier();
+
+    /**
      * Retrieve the agents that are associated with this Authorization
      * @return the Agent values
      */
