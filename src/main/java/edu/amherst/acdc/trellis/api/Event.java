@@ -66,4 +66,10 @@ public interface Event {
      * @return the date-time for this event
      */
     Instant getCreated();
+
+    /**
+     * Get the inbox corresponding to the target, if one exists
+     * @return the inbox
+     */
+    Optional<IRI> getInbox();
 }
