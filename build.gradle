@@ -65,7 +65,7 @@ jar {
         vendor project.vendor
         license project.license
 
-        instruction 'Import-Package', 'org.apache.commons.rdf.api,*'
+        instruction 'Import-Package', '*'
         instruction 'Export-Package', "edu.amherst.acdc.trellis.api;version=${projectOsgiVersion}"
     }
 }
