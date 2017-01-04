@@ -38,8 +38,41 @@ public interface Resource {
 
     /**
      * The category of triples used when producing RDF.
-     */
+     *
+     * Repository resources are described using RDF triples, which are organized into
+     * distinct categories. In an LDP context, the category of RDF triples returned
+     * may be controlled with Prefer headers.
+     * */
     interface TripleCategory {}
+
+    /**
+     * A minimal set of TripleCategories supported by an implementation.
+     */
+    enum TripleContext implements TripleCategory {
+        /* User-managed properties */
+        USER_MANAGED,
+
+        /* Server-managed properties */
+        SERVER_MANAGED,
+
+        /* LDP Containment triples */
+        LDP_CONTAINMENT,
+
+        /* LDP Membership triples */
+        LDP_MEMBERSHIP,
+
+        /* Fedora Inbound References */
+        FEDORA_INBOUND_REFERENCES,
+
+        /* Fedora Embed Resources */
+        FEDORA_EMBED_RESOURCES,
+
+        /* Premis Fixity properties */
+        PREMIS_FIXITY,
+
+        /* Memento Timemap properties */
+        MEMENTO_TIMEMAP
+    }
 
     /**
      * Get an identifier for this resource
