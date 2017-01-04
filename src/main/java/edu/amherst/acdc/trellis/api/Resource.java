@@ -136,7 +136,7 @@ public interface Resource {
      * @param <T> the triple category
      * @return the RDF triples
      */
-    <T extends TripleCategory> Stream<Triple> getTriples(Collection<T> category);
+    <T extends TripleCategory> Stream<Triple> stream(Collection<T> category);
 
     /**
      * Retrieve the RDF Triples for a resource
@@ -144,8 +144,8 @@ public interface Resource {
      * @param <T> the triple category
      * @return the RDF triples
      */
-    default <T extends TripleCategory> Stream<Triple> getTriples(T category) {
-        return getTriples(singleton(category));
+    default <T extends TripleCategory> Stream<Triple> stream(T category) {
+        return stream(singleton(category));
     }
 
     /**
