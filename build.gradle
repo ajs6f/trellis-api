@@ -30,7 +30,6 @@ ext {
     commonsRdfVersion = '0.3.0-incubating'
 
     /* OSGi */
-    defaultOsgiImports = '*'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
 
@@ -67,7 +66,7 @@ jar {
         license project.license
 
         instruction 'Import-Package', 'org.apache.commons.rdf.api,*'
-        instruction 'Export-Package', 'edu.amherst.acdc.trellis.api'
+        instruction 'Export-Package', "edu.amherst.acdc.trellis.api;version=${projectOsgiVersion}"
     }
 }
 
