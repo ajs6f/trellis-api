@@ -37,6 +37,11 @@ import org.apache.commons.rdf.api.IRI;
 public interface Datastream {
 
     /**
+     * A StoragePartition provides a hint for where datastream content can be stored.
+     */
+    interface StoragePartition {}
+
+    /**
      * Retrieve an IRI identifying the location of the datastream
      * @return the resource content
      */
