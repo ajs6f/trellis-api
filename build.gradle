@@ -40,7 +40,7 @@ configurations {
 
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-rdf-api', version: commonsRdfVersion
-    buildToolsConfig 'edu.amherst.acdc:acrepo-build-tools:0.1.0'
+    buildToolsConfig 'edu.amherst.acdc:acrepo-build-tools:0.2.0'
 }
 
 repositories {
@@ -183,7 +183,7 @@ uploadArchives {
                 license {
                     name 'Apache License, Version 2.0'
                     url 'http://www.apache.org/licenses/LICENSE-2.0'
-                    comments 'Copyright (c) 2016 Amherst College'
+                    comments 'Copyright (c) 2017 Amherst College'
                 }
             }
         }
