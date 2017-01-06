@@ -67,9 +67,6 @@ public interface Resource {
         /* Fedora Embed Resources */
         FEDORA_EMBED_RESOURCES,
 
-        /* Premis Fixity properties */
-        PREMIS_FIXITY,
-
         /* Memento Timemap properties */
         MEMENTO_TIMEMAP
     }
