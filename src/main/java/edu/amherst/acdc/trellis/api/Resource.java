@@ -125,7 +125,7 @@ public interface Resource {
      * Retrieve a stream of Mementos for this resource
      * @return a stream of known Mementos
      */
-    Stream<Memento> getTimeMap();
+    Stream<MementoLink> getTimeMap();
 
     /**
      * Retrieve the RDF Triples for a resource
