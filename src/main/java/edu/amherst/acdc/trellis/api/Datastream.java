@@ -66,13 +66,6 @@ public interface Datastream {
     Optional<Long> getSize();
 
     /**
-     * Get the checksum digest for the given algorithm
-     * @param algorithm the algorithm
-     * @return a digest value if one exists for the provided algorithm
-     */
-    Optional<String> getDigest(String algorithm);
-
-    /**
      * Retrieve the created date of the datastream
      * @return the created date
      */
