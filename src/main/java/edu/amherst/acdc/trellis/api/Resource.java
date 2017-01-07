@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import org.apache.commons.rdf.api.Graph;
 import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.Triple;
 
@@ -192,22 +191,10 @@ public interface Resource {
     Optional<IRI> getInbox();
 
     /**
-     * Set the ldp:inbox value for this resource
-     * @param inbox an IRI for this resource's inbox
-     */
-    void setInbox(IRI inbox);
-
-    /**
      * Get the acl:accessControl IRI, if one exists
      * @return an IRI used for access control
      */
     Optional<IRI> getAccessControl();
-
-    /**
-     * Set an acl:accessControl IRI
-     * @param acl an IRI used for access control
-     */
-    void setAccessControl(IRI acl);
 
     /**
      * Get the rdf:type(s) for this resource
@@ -216,22 +203,10 @@ public interface Resource {
     Stream<IRI> getTypes();
 
     /**
-     * Set the rdf:type(s) for this resource
-     * @param types the RDF Types of this resource
-     */
-    void setTypes(Collection<IRI> types);
-
-    /**
      * Get the created-by value
      * @return the created-by value
      */
     Optional<IRI> getCreatedBy();
-
-    /**
-     * Set the created-by value
-     * @param createdBy the value of created-by
-     */
-    void setCreatedBy(IRI createdBy);
 
     /**
      * Get the modified-by value, if one exists
@@ -240,43 +215,14 @@ public interface Resource {
     Optional<IRI> getModifiedBy();
 
     /**
-     * Set the modified-by value
-     * @param modifiedBy the value of last-modified-by
-     */
-    void setModifiedBy(IRI modifiedBy);
-
-    /**
      * Get the created date
      * @return the created date
      */
     Instant getCreated();
 
     /**
-     * Set the created date
-     * @param created the created date
-     */
-    void setCreated(Instant created);
-
-    /**
      * Get the last modified date
      * @return the last-modified date
      */
     Instant getModified();
-
-    /**
-     * Set the last modified date
-     * @param modified the last-modified date
-     */
-    void setModified(Instant modified);
-
-    /**
-     * Update the resource triples with the provided graph
-     * @param graph the updated triples to persist
-     */
-    void updateTriples(Graph graph);
-
-    /**
-     * Delete the resource
-     */
-    void delete();
 }
