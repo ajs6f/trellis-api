@@ -54,12 +54,6 @@ public interface Datastream {
     Optional<String> getMimeType();
 
     /**
-     * Retrieve the original filename for the resource, if one was specified
-     * @return the filename
-     */
-    Optional<String> getFileName();
-
-    /**
      * Retrieve the size of the datastream, if known
      * @return the datastream size
      */
