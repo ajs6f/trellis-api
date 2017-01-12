@@ -203,16 +203,10 @@ public interface Resource {
     Stream<IRI> getTypes();
 
     /**
-     * Get the created-by value
-     * @return the created-by value
+     * Get the creator value
+     * @return the creator value
      */
-    Optional<IRI> getCreatedBy();
-
-    /**
-     * Get the modified-by value, if one exists
-     * @return the modified-by value
-     */
-    Optional<IRI> getModifiedBy();
+    Optional<IRI> getCreator();
 
     /**
      * Get the created date
