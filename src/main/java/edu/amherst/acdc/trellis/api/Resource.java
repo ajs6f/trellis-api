@@ -126,7 +126,9 @@ public interface Resource {
      * Retrieve a stream of child resources
      * @return a stream of child resources
      */
-    Stream<IRI> getChildren();
+    default Stream<IRI> getChildren() {
+        return Stream.empty();
+    }
 
     /**
      * Retrieve a stream of Mementos for this resource
@@ -202,6 +204,7 @@ public interface Resource {
 
     /**
      * Get the IRI for the next LDP Page
+     * @return the IRI for the next page
      */
     default Optional<IRI> getNextPage() {
         return empty();
@@ -219,7 +222,7 @@ public interface Resource {
      * Get the acl:accessControl IRI, if one exists
      * @return an IRI used for access control
      */
-    Optional<IRI> getAccessControl() {
+    default Optional<IRI> getAccessControl() {
         return empty();
     }
 
@@ -233,7 +236,7 @@ public interface Resource {
      * Get the creator value
      * @return the creator value
      */
-    Optional<IRI> getCreator() {
+    default Optional<IRI> getCreator() {
         return empty();
     }
 
