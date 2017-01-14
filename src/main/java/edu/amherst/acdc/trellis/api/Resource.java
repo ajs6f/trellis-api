@@ -85,6 +85,14 @@ public interface Resource {
     }
 
     /**
+     * Get the IRI for the canonical resource
+     * @return the IRI for the canonical resource
+     */
+    default IRI getCanonicalResource() {
+        return getOriginalResource();
+    }
+
+    /**
      * If a separate description exists for this resource, retrieve the IRI for it
      * @return the IRI for the description
      */
@@ -185,16 +193,35 @@ public interface Resource {
     }
 
     /**
+     * Test whether this resource is an LDP Page
+     * @return whether the resource is an LDP Page
+     */
+    default Boolean isPage() {
+        return false;
+    }
+
+    /**
+     * Get the IRI for the next LDP Page
+     */
+    default Optional<IRI> getNextPage() {
+        return empty();
+    }
+
+    /**
      * Get the ldp:inbox for this resource, if one exists
      * @return the ldp:inbox IRI
      */
-    Optional<IRI> getInbox();
+    default Optional<IRI> getInbox() {
+        return empty();
+    }
 
     /**
      * Get the acl:accessControl IRI, if one exists
      * @return an IRI used for access control
      */
-    Optional<IRI> getAccessControl();
+    Optional<IRI> getAccessControl() {
+        return empty();
+    }
 
     /**
      * Get the rdf:type(s) for this resource
@@ -206,7 +233,9 @@ public interface Resource {
      * Get the creator value
      * @return the creator value
      */
-    Optional<IRI> getCreator();
+    Optional<IRI> getCreator() {
+        return empty();
+    }
 
     /**
      * Get the created date
