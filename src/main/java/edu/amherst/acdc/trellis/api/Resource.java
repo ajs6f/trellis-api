@@ -203,6 +203,22 @@ public interface Resource {
     }
 
     /**
+     * Test whether this resource is an LDP Direct Container
+     * @return whether the resource is a Direct Container
+     */
+    default Boolean isDirectContainer() {
+        return false;
+    }
+
+    /**
+     * Test whether this resource is an LDP Indirect Container
+     * @return whether the resource is an Indirect Container
+     */
+    default Boolean isIndirectContainer() {
+        return false;
+    }
+
+    /**
      * Test whether this resource is an LDP RdfSource
      * @return whether the resource is a RDF resource
      */
