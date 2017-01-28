@@ -80,7 +80,7 @@ public interface Resource {
      * Get the IRI for the original resource
      * @return the IRI for the original resource
      */
-    default IRI getOriginalResource() {
+    default IRI getOriginal() {
         return getIdentifier();
     }
 
@@ -88,15 +88,15 @@ public interface Resource {
      * Get the IRI for the canonical resource
      * @return the IRI for the canonical resource
      */
-    default IRI getCanonicalResource() {
-        return getOriginalResource();
+    default IRI getCanonical() {
+        return getOriginal();
     }
 
     /**
      * If a separate description exists for this resource, retrieve the IRI for it
      * @return the IRI for the description
      */
-    default Optional<IRI> getDescription() {
+    default Optional<IRI> getDescribedBy() {
         return empty();
     }
 
@@ -104,7 +104,7 @@ public interface Resource {
      * Get the IRI for the described resource, if one exists
      * @return the IRI for the described resource
      */
-    default Optional<IRI> getDescribedResource() {
+    default Optional<IRI> getDescribes() {
         return empty();
     }
 
@@ -112,21 +112,21 @@ public interface Resource {
      * Retrieve the IRI for this resource's timemap, if one exists
      * @return the IRI for the resource's timemap
      */
-    default Optional<IRI> getTimeMapResource() {
+    default Optional<IRI> getTimeMap() {
         return empty();
     }
 
     /**
-     * Retrieve the parent resource, if it exists
-     * @return the IRI for the parent resource
+     * Retrieve the resource that contains this resource, if it exists
+     * @return the IRI for the resource that contains this resource
      */
-    Optional<IRI> getParent();
+    Optional<IRI> getContainedBy();
 
     /**
-     * Retrieve a stream of child resources
-     * @return a stream of child resources
+     * Retrieve a stream of resources contained by this resource
+     * @return a stream of contained resources
      */
-    default Stream<IRI> getChildren() {
+    default Stream<IRI> getContains() {
         return Stream.empty();
     }
 
@@ -134,7 +134,7 @@ public interface Resource {
      * Retrieve a stream of Mementos for this resource
      * @return a stream of known Mementos
      */
-    Stream<MementoLink> getTimeMap();
+    Stream<MementoLink> getMementos();
 
     /**
      * Retrieve the RDF Triples for a resource
@@ -206,7 +206,7 @@ public interface Resource {
      * Get the IRI for the next LDP Page
      * @return the IRI for the next page
      */
-    default Optional<IRI> getNextPage() {
+    default Optional<IRI> getNext() {
         return empty();
     }
 
@@ -222,7 +222,7 @@ public interface Resource {
      * Get the acl:accessControl IRI, if one exists
      * @return an IRI used for access control
      */
-    default Optional<IRI> getAccessControl() {
+    default Optional<IRI> getAcl() {
         return empty();
     }
 
