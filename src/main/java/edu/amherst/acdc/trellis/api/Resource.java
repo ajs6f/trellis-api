@@ -140,9 +140,17 @@ public interface Resource {
 
     /**
      * Retrieve the member relation if this is an LDP Direct or Indirect container
-     * @return the member relation
+     * @return the ldp:hasMemberRelation IRI
      */
     default Optional<IRI> getMemberRelation() {
+        return empty();
+    }
+
+    /**
+     * Retrieve the member of relation IRI
+     * @return the ldp:isMemberOfRelation IRI
+     */
+    default Optional<IRI> getMemberOfRelation() {
         return empty();
     }
 
