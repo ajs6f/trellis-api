@@ -131,6 +131,30 @@ public interface Resource {
     }
 
     /**
+     * Retrieve the membership resource if this is an LDP Direct or Indirect container
+     * @return the membership resource
+     */
+    default Optional<IRI> getMembershipResource() {
+        return empty();
+    }
+
+    /**
+     * Retrieve the member relation if this is an LDP Direct or Indirect container
+     * @return the member relation
+     */
+    default Optional<IRI> getMemberRelation() {
+        return empty();
+    }
+
+    /**
+     * Retrieve the inserted content relation if this is an LDP Indirect container
+     * @return the inserted content relation
+     */
+    default Optional<IRI> getInsertedContentRelation() {
+        return empty();
+    }
+
+    /**
      * Retrieve a stream of Mementos for this resource
      * @return a stream of known Mementos
      */
