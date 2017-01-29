@@ -77,6 +77,12 @@ public interface Resource {
     IRI getIdentifier();
 
     /**
+     * Get the LDP interaction model for this resource
+     * @return the interaction model
+     */
+    IRI getInteractionModel();
+
+    /**
      * Get the IRI for the original resource
      * @return the IRI for the original resource
      */
@@ -199,46 +205,6 @@ public interface Resource {
      * @return whether the resource is a Memento
      */
     default Boolean isMemento() {
-        return false;
-    }
-
-    /**
-     * Test whether this resource is an LDP Container
-     * @return whether the resource is a Container
-     */
-    default Boolean isContainer() {
-        return false;
-    }
-
-    /**
-     * Test whether this resource is an LDP Direct Container
-     * @return whether the resource is a Direct Container
-     */
-    default Boolean isDirectContainer() {
-        return false;
-    }
-
-    /**
-     * Test whether this resource is an LDP Indirect Container
-     * @return whether the resource is an Indirect Container
-     */
-    default Boolean isIndirectContainer() {
-        return false;
-    }
-
-    /**
-     * Test whether this resource is an LDP RdfSource
-     * @return whether the resource is a RDF resource
-     */
-    default Boolean isRdfSource() {
-        return false;
-    }
-
-    /**
-     * Test whether this resource is an LDP NonRdfSource
-     * @return whether the resource is a Non-RDF resource
-     */
-    default Boolean isNonRdfSource() {
         return false;
     }
 
