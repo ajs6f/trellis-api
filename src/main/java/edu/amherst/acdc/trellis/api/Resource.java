@@ -51,9 +51,6 @@ public interface Resource {
         /* User-managed properties */
         USER_MANAGED,
 
-        /* Server-managed properties */
-        SERVER_MANAGED,
-
         /* LDP Containment triples */
         LDP_CONTAINMENT,
 
