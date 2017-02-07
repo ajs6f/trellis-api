@@ -64,7 +64,10 @@ public interface Resource {
         FEDORA_EMBED_RESOURCES,
 
         /* Memento Timemap properties */
-        MEMENTO_TIMEMAP
+        MEMENTO_TIMEMAP,
+
+        /* Trellis Audit properties */
+        TRELLIS_AUDIT
     }
 
     /**
@@ -93,22 +96,6 @@ public interface Resource {
      */
     default IRI getCanonical() {
         return getOriginal();
-    }
-
-    /**
-     * If a separate description exists for this resource, retrieve the IRI for it
-     * @return the IRI for the description
-     */
-    default Optional<IRI> getDescribedBy() {
-        return empty();
-    }
-
-    /**
-     * Get the IRI for the described resource, if one exists
-     * @return the IRI for the described resource
-     */
-    default Optional<IRI> getDescribes() {
-        return empty();
     }
 
     /**
