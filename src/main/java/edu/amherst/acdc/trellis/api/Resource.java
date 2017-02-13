@@ -83,30 +83,6 @@ public interface Resource {
     IRI getInteractionModel();
 
     /**
-     * Get the IRI for the original resource
-     * @return the IRI for the original resource
-     */
-    default IRI getOriginal() {
-        return getIdentifier();
-    }
-
-    /**
-     * Get the IRI for the canonical resource
-     * @return the IRI for the canonical resource
-     */
-    default IRI getCanonical() {
-        return getOriginal();
-    }
-
-    /**
-     * Retrieve the IRI for this resource's timemap, if one exists
-     * @return the IRI for the resource's timemap
-     */
-    default Optional<IRI> getTimeMap() {
-        return empty();
-    }
-
-    /**
      * Retrieve the resource that contains this resource, if it exists
      * @return the IRI for the resource that contains this resource
      */
