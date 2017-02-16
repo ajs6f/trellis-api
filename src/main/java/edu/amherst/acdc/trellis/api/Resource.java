@@ -132,7 +132,7 @@ public interface Resource {
      * Retrieve a stream of Mementos for this resource
      * @return a stream of known Mementos
      */
-    Stream<MementoLink> getMementos();
+    Stream<VersionRange> getMementos();
 
     /**
      * Retrieve the RDF Triples for a resource

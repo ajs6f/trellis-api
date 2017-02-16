@@ -15,6 +15,9 @@
  */
 package edu.amherst.acdc.trellis.api;
 
+import static java.util.Objects.requireNonNull;
+import static java.util.Optional.ofNullable;
+
 import java.time.Instant;
 import java.util.Optional;
 
@@ -26,48 +29,80 @@ import org.apache.commons.rdf.api.IRI;
  *
  * For those resources that are non-RDF resources (LDP-NR), the base Resource interface
  * will make a Datastream object available. The datastream content is not accessed directly
- * through the Datastream interface, but rather an identifier is returned, which may
+ * through the Datastream class, but rather an identifier is returned, which may
  * be resolved by an external system.
  *
- * The Datastream interface also provides access methods for the MimeType, original filename,
- * and checksum digest values.
+ * The Datastream class also provides access methods for the MimeType and size of the
+ * resource.
  *
  * @author acoburn
  */
-public interface Datastream {
+class Datastream {
+
+    private final IRI identifier;
+    private final String mimeType;
+    private final Long size;
+    private final Instant created;
+    private final Instant modified;
 
     /**
-     * A StoragePartition provides a hint for where datastream content can be stored.
+     * A simple Datastream object
+     * @param identifier the identifier
+     * @param created the created date
+     * @param modified the modified date
+     * @param mimeType the mimeType
+     * @param size the size
      */
-    interface StoragePartition {}
+    public Datastream(final IRI identifier, final Instant created, final Instant modified,
+            final String mimeType, final Long size) {
+        requireNonNull(identifier);
+        requireNonNull(created);
+        requireNonNull(modified);
+
+        this.identifier = identifier;
+        this.created = created;
+        this.modified = modified;
+        this.mimeType = mimeType;
+        this.size = size;
+    }
 
     /**
      * Retrieve an IRI identifying the location of the datastream
      * @return the resource content
      */
-    IRI getIdentifier();
+    public IRI getIdentifier() {
+        return identifier;
+    }
 
     /**
      * Retrieve the mime-type of the resource, if one was specified
      * @return the mime-type
      */
-    Optional<String> getMimeType();
+    public Optional<String> getMimeType() {
+        return ofNullable(mimeType);
+    }
 
     /**
      * Retrieve the size of the datastream, if known
      * @return the datastream size
      */
-    Optional<Long> getSize();
+    public Optional<Long> getSize() {
+        return ofNullable(size);
+    }
 
     /**
      * Retrieve the created date of the datastream
      * @return the created date
      */
-    Instant getCreated();
+    public Instant getCreated() {
+        return created;
+    }
 
     /**
      * Retrieve the last-modified date of the datastream
      * @return the last-modified date
      */
-    Instant getModified();
+    public Instant getModified() {
+        return modified;
+    }
 }
