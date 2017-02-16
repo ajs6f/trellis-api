@@ -37,7 +37,7 @@ import org.apache.commons.rdf.api.IRI;
  *
  * @author acoburn
  */
-class Datastream {
+public class Datastream {
 
     private final IRI identifier;
     private final String mimeType;
