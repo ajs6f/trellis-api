@@ -215,6 +215,14 @@ public interface Resource {
     }
 
     /**
+     * Get the IRI for the resource's annotation service
+     * @return the annotation service
+     */
+    default Optional<IRI> getAnnotationService() {
+        return empty();
+    }
+
+    /**
      * Get the created date
      * @return the created date
      */
