@@ -46,6 +46,11 @@ public class Datastream {
     private final Instant modified;
 
     /**
+     * A StoragePartition provides a hint for where datastream content can be stored.
+     * */
+    public interface StoragePartition {}
+
+    /**
      * A simple Datastream object
      * @param identifier the identifier
      * @param created the created date
