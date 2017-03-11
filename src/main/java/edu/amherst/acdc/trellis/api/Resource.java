@@ -15,16 +15,14 @@
  */
 package edu.amherst.acdc.trellis.api;
 
-import static java.util.Collections.singleton;
 import static java.util.Optional.empty;
 
 import java.time.Instant;
-import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.apache.commons.rdf.api.IRI;
-import org.apache.commons.rdf.api.Triple;
+import org.apache.commons.rdf.api.Quad;
 
 /**
  * The central abstraction for a trellis-based repository.
@@ -34,41 +32,6 @@ import org.apache.commons.rdf.api.Triple;
  * @author acoburn
  */
 public interface Resource {
-
-    /**
-     * The category of triples used when producing RDF.
-     *
-     * Repository resources are described using RDF triples, which are organized into
-     * distinct categories. In an LDP context, the category of RDF triples returned
-     * may be controlled with Prefer headers.
-     * */
-    interface TripleCategory {}
-
-    /**
-     * A minimal set of TripleCategories supported by an implementation.
-     */
-    enum TripleContext implements TripleCategory {
-        /* User-managed properties */
-        USER_MANAGED,
-
-        /* LDP Containment triples */
-        LDP_CONTAINMENT,
-
-        /* LDP Membership triples */
-        LDP_MEMBERSHIP,
-
-        /* Fedora Inbound References */
-        FEDORA_INBOUND_REFERENCES,
-
-        /* Fedora Embed Resources */
-        FEDORA_EMBED_RESOURCES,
-
-        /* Memento Timemap properties */
-        MEMENTO_TIMEMAP,
-
-        /* Trellis Audit properties */
-        TRELLIS_AUDIT
-    }
 
     /**
      * Get an identifier for this resource
@@ -135,22 +98,10 @@ public interface Resource {
     Stream<VersionRange> getMementos();
 
     /**
-     * Retrieve the RDF Triples for a resource
-     * @param category The category of triples to retrieve
-     * @param <T> the triple category
+     * Retrieve the RDF Quads for a resource
      * @return the RDF triples
      */
-    <T extends TripleCategory> Stream<Triple> stream(Collection<T> category);
-
-    /**
-     * Retrieve the RDF Triples for a resource
-     * @param category The category of triples to retrieve
-     * @param <T> the triple category
-     * @return the RDF triples
-     */
-    default <T extends TripleCategory> Stream<Triple> stream(T category) {
-        return stream(singleton(category));
-    }
+    Stream<Quad> stream();
 
     /**
      * Retrieve a datastream for this resouce, if it is a LDP-NR
