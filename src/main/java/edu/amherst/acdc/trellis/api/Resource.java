@@ -15,14 +15,17 @@
  */
 package edu.amherst.acdc.trellis.api;
 
+import static java.util.Collections.singleton;
 import static java.util.Optional.empty;
 
 import java.time.Instant;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.Quad;
+import org.apache.commons.rdf.api.Triple;
 
 /**
  * The central abstraction for a trellis-based repository.
@@ -99,9 +102,28 @@ public interface Resource {
 
     /**
      * Retrieve the RDF Quads for a resource
-     * @return the RDF triples
+     * @return the RDF quads
      */
     Stream<Quad> stream();
+
+    /**
+     * Retrieve the RDF Triples for a given named graph
+     * @param graphName the named graph
+     * @return the RDF triples
+     */
+    default Stream<Triple> stream(IRI graphName) {
+        return stream(singleton(graphName));
+    }
+
+    /**
+     * Retrieve the RDF Triples for a set of named graphs
+     * @param graphNames the named graphs
+     * @return the RDF triples
+     */
+    default Stream<Triple> stream(Collection<IRI> graphNames) {
+        return stream().filter(quad -> quad.getGraphName().filter(graphNames::contains).isPresent())
+            .map(Quad::asTriple);
+    }
 
     /**
      * Retrieve a datastream for this resouce, if it is a LDP-NR
