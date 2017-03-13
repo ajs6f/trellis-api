@@ -21,8 +21,8 @@ import java.time.Instant;
 
 /**
  * This class provides a mechanism for representing date ranges,
- * which are used by Memento resources and included in a TimeMap
- * or in a Link headers.
+ * which are used by Memento resources and included in either TimeMap
+ * or Link headers.
  *
  * @see <a href="http://tools.ietf.org/html/rfc7089">IETF RFC 7089</a>
  *
