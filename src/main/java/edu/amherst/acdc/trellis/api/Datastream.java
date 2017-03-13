@@ -28,12 +28,12 @@ import org.apache.commons.rdf.api.IRI;
  * non-RDF resources. Non-RDF resources may also have a corresponding RDF description.
  * These interfaces assume it is the case that Non-RDF resources have an RDF description.</p>
  *
- * <p>For those resources that are non-RDF resources (LDP-NR), the base Resource interface
- * will make a Datastream object available. The datastream content is not accessed directly
- * through the Datastream class, but rather an identifier is returned, which may
+ * <p>For those resources that are non-RDF resources (LDP-NR), the base {@link Resource} interface
+ * will make a {@link Datastream} object available. The datastream content is not accessed directly
+ * through the {@link Datastream} class, but rather an identifier is returned, which may
  * be resolved by an external system.</p>
  *
- * <p>The Datastream class also provides access methods for the MimeType and size of the
+ * <p>The {@link Datastream} class also provides access methods for the MIME Type and size of the
  * resource.</p>
  *
  * @author acoburn
