@@ -56,6 +56,9 @@ public interface Resource {
 
     /**
      * Retrieve a stream of resources contained by this resource
+     *
+     * <p>Note: Non-Container resources will always return an empty stream.</p>
+     *
      * @return a stream of contained resources
      */
     default Stream<IRI> getContains() {
@@ -64,6 +67,9 @@ public interface Resource {
 
     /**
      * Retrieve the membership resource if this is an LDP Direct or Indirect container
+     *
+     * <p>Note: Other resource types will always return an empty {@link Optional} value.</p>
+     *
      * @return the membership resource
      */
     default Optional<IRI> getMembershipResource() {
@@ -72,6 +78,9 @@ public interface Resource {
 
     /**
      * Retrieve the member relation if this is an LDP Direct or Indirect container
+     *
+     * <p>Note: Other resource types will always return an empty {@link Optional} value.</p>
+     *
      * @return the ldp:hasMemberRelation IRI
      */
     default Optional<IRI> getMemberRelation() {
@@ -80,6 +89,9 @@ public interface Resource {
 
     /**
      * Retrieve the member of relation IRI
+     *
+     * <p>Note: Other resource types will always return an empty {@link Optional} value.</p>
+     *
      * @return the ldp:isMemberOfRelation IRI
      */
     default Optional<IRI> getMemberOfRelation() {
@@ -88,6 +100,9 @@ public interface Resource {
 
     /**
      * Retrieve the inserted content relation if this is an LDP Indirect container
+     *
+     * <p>Note: Other resource types will always return an empty {@link Optional} value.</p>
+     *
      * @return the inserted content relation
      */
     default Optional<IRI> getInsertedContentRelation() {
@@ -127,6 +142,9 @@ public interface Resource {
 
     /**
      * Retrieve a datastream for this resouce, if it is a LDP-NR
+     *
+     * <p>Note: Other resource types will always return an empty {@link Optional} value.</p>
+     *
      * @return the datastream
      */
     default Optional<Datastream> getDatastream() {
@@ -135,7 +153,7 @@ public interface Resource {
 
     /**
      * Test whether this resource is a Memento resource
-     * @return whether the resource is a Memento
+     * @return true if this is a Memento resource; false otherwise
      */
     default Boolean isMemento() {
         return false;
@@ -143,7 +161,7 @@ public interface Resource {
 
     /**
      * Test whether this resource is an LDP Page
-     * @return whether the resource is an LDP Page
+     * @return true if this is an LDP Page; false otherwise
      */
     default Boolean isPage() {
         return false;
@@ -151,6 +169,9 @@ public interface Resource {
 
     /**
      * Get the IRI for the next LDP Page
+     *
+     * <p>Note: a non-paged representation will return an empty {@link Optional} value.</p>
+     *
      * @return the IRI for the next page
      */
     default Optional<IRI> getNext() {
@@ -159,6 +180,10 @@ public interface Resource {
 
     /**
      * Get the ldp:inbox for this resource, if one exists
+     *
+     * <p>Note: if an ldp:inbox value does not exist for this resource,
+     * an empty {@link Optional} value will be returned.</p>
+     *
      * @return the ldp:inbox IRI
      */
     default Optional<IRI> getInbox() {
@@ -167,6 +192,10 @@ public interface Resource {
 
     /**
      * Get the acl:accessControl IRI, if one exists
+     *
+     * <p>Note: if there is no acl:accessControl value for this resource,
+     * an empty {@link Optional} value will be returned.</p>
+     *
      * @return an IRI used for access control
      */
     default Optional<IRI> getAcl() {
@@ -181,6 +210,9 @@ public interface Resource {
 
     /**
      * Get the creator value
+     *
+     * <p>Note: if no creator value exists, an empty {@link Optional} value will be returned.</p>
+     *
      * @return the creator value
      */
     default Optional<IRI> getCreator() {
@@ -189,6 +221,10 @@ public interface Resource {
 
     /**
      * Get the IRI for the resource's annotation service
+     *
+     * <p>Note: if there is no oa:annotationService value for this resource,
+     * an empty {@link Optional} value will be returned.</p>
+     *
      * @return the annotation service
      */
     default Optional<IRI> getAnnotationService() {

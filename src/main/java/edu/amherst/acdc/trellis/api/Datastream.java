@@ -25,7 +25,8 @@ import org.apache.commons.rdf.api.IRI;
 
 /**
  * The LDP specification divides resources into two categories: RDF resources and
- * non-RDF resources. Non-RDF resources also have a corresponding RDF description.
+ * non-RDF resources. Non-RDF resources may also have a corresponding RDF description.
+ * These interfaces assume it is the case that Non-RDF resources have an RDF description.
  *
  * For those resources that are non-RDF resources (LDP-NR), the base Resource interface
  * will make a Datastream object available. The datastream content is not accessed directly
