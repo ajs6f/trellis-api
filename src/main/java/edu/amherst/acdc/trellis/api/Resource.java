@@ -49,12 +49,6 @@ public interface Resource {
     IRI getInteractionModel();
 
     /**
-     * Retrieve the resource that contains this resource, if it exists
-     * @return the IRI for the resource that contains this resource
-     */
-    Optional<IRI> getContainedBy();
-
-    /**
      * Retrieve a stream of resources contained by this resource
      *
      * <p>Note: Non-Container resources will always return an empty stream.</p>
