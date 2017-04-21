@@ -30,7 +30,7 @@ import org.apache.commons.rdf.api.Triple;
 /**
  * The central abstraction for a trellis-based repository.
  *
- * @see <a href="http://fedora.info/spec/">Fedora API Specification</a>
+ * @see <a href="https://www.w3.org/TR/ldp/">Linked Data Platform Specification</a>
  *
  * @author acoburn
  */
