@@ -43,25 +43,20 @@ public class Datastream {
     private final IRI identifier;
     private final String mimeType;
     private final Long size;
-    private final Instant created;
     private final Instant modified;
 
     /**
      * A simple Datastream object
      * @param identifier the identifier
-     * @param created the created date
      * @param modified the modified date
      * @param mimeType the mimeType
      * @param size the size
      */
-    public Datastream(final IRI identifier, final Instant created, final Instant modified,
-            final String mimeType, final Long size) {
+    public Datastream(final IRI identifier, final Instant modified, final String mimeType, final Long size) {
         requireNonNull(identifier);
-        requireNonNull(created);
         requireNonNull(modified);
 
         this.identifier = identifier;
-        this.created = created;
         this.modified = modified;
         this.mimeType = mimeType;
         this.size = size;
@@ -89,14 +84,6 @@ public class Datastream {
      */
     public Optional<Long> getSize() {
         return ofNullable(size);
-    }
-
-    /**
-     * Retrieve the created date of the datastream
-     * @return the created date
-     */
-    public Instant getCreated() {
-        return created;
     }
 
     /**
