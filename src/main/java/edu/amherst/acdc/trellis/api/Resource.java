@@ -226,12 +226,6 @@ public interface Resource {
     }
 
     /**
-     * Get the created date
-     * @return the created date
-     */
-    Instant getCreated();
-
-    /**
      * Get the last modified date
      * @return the last-modified date
      */
