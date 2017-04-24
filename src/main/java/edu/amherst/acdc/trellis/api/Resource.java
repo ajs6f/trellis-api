@@ -203,17 +203,6 @@ public interface Resource {
     Stream<IRI> getTypes();
 
     /**
-     * Get the creator value
-     *
-     * <p>Note: if no creator value exists, an empty {@link Optional} value will be returned.</p>
-     *
-     * @return the creator value
-     */
-    default Optional<IRI> getCreator() {
-        return empty();
-    }
-
-    /**
      * Get the IRI for the resource's annotation service
      *
      * <p>Note: if there is no oa:annotationService value for this resource,
