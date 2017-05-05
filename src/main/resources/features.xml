@@ -4,6 +4,6 @@
     <details>Installs the Trellis API bundle</details>
 
     <bundle dependency="true">mvn:org.apache.commons/commons-rdf-api/${commonsRdfVersion}</bundle>
-    <bundle>mvn:edu.amherst.acdc/trellis-api/${project.version}</bundle>
+    <bundle>mvn:org.trellisldp/trellis-api/${project.version}</bundle>
   </feature>
 </features>
