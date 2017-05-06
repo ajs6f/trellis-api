@@ -1,5 +1,11 @@
 language: java
-sudo: false
+sudo: required
+dist: trusty
+group: edge
 jdk:
   - oraclejdk8
   - oraclejdk9
+
+matrix:
+    allow_failures:
+        - jdk: oraclejdk9
