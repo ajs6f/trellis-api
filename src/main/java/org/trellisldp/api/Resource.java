@@ -133,13 +133,13 @@ public interface Resource {
     }
 
     /**
-     * Retrieve a datastream for this resouce, if it is a LDP-NR
+     * Retrieve a Blob holder for this resouce, if it is a LDP-NR
      *
      * <p>Note: Other resource types will always return an empty {@link Optional} value.</p>
      *
-     * @return the datastream
+     * @return the binary object
      */
-    default Optional<Datastream> getDatastream() {
+    default Optional<Blob> getBlob() {
         return empty();
     }
 
