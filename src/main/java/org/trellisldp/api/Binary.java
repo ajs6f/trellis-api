@@ -27,16 +27,16 @@ import org.apache.commons.rdf.api.IRI;
  * These interfaces assume it is the case that Non-RDF resources have an RDF description.</p>
  *
  * <p>For those resources that are non-RDF resources (LDP-NR), the base {@link Resource} interface
- * will make a {@link Blob} object available. The blob content is not accessed directly
- * through the {@link Blob} class, but rather an identifier is returned, which may
+ * will make a {@link Binary} object available. The binary content is not accessed directly
+ * through the {@link Binary} class, but rather an identifier is returned, which may
  * be resolved by an external system.</p>
  *
- * <p>The {@link Blob} class also provides access methods for the MIME Type and size of the
+ * <p>The {@link Binary} class also provides access methods for the MIME Type and size of the
  * resource.</p>
  *
  * @author acoburn
  */
-public class Blob {
+public class Binary {
 
     private final IRI identifier;
     private final String mimeType;
@@ -44,13 +44,13 @@ public class Blob {
     private final Instant modified;
 
     /**
-     * A simple Blob object
+     * A simple Binary object
      * @param identifier the identifier
      * @param modified the modified date
      * @param mimeType the mimeType
      * @param size the size
      */
-    public Blob(final IRI identifier, final Instant modified, final String mimeType, final Long size) {
+    public Binary(final IRI identifier, final Instant modified, final String mimeType, final Long size) {
         requireNonNull(identifier);
         requireNonNull(modified);
 
@@ -61,7 +61,7 @@ public class Blob {
     }
 
     /**
-     * Retrieve an IRI identifying the location of the blob
+     * Retrieve an IRI identifying the location of the binary
      * @return the resource content
      */
     public IRI getIdentifier() {
@@ -77,15 +77,15 @@ public class Blob {
     }
 
     /**
-     * Retrieve the size of the blob, if known
-     * @return the blob size
+     * Retrieve the size of the binary, if known
+     * @return the binary size
      */
     public Optional<Long> getSize() {
         return ofNullable(size);
     }
 
     /**
-     * Retrieve the last-modified date of the blob
+     * Retrieve the last-modified date of the binary
      * @return the last-modified date
      */
     public Instant getModified() {
