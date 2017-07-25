@@ -29,6 +29,11 @@ ext {
     /* Dependencies */
     commonsRdfVersion = '0.3.0-incubating'
 
+    /* Testing */
+    trellisVocabularyVersion = '0.1.0-SNAPSHOT'
+    junitVersion = '4.12'
+    mockitoVersion = '2.8.47'
+
     /* OSGi */
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
@@ -39,6 +44,12 @@ configurations {
 
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-rdf-api', version: commonsRdfVersion
+
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+    testCompile group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+    testCompile group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVocabularyVersion
+    testCompile group: 'org.apache.commons', name: 'commons-rdf-simple', version: commonsRdfVersion
+
     buildToolsConfig 'org.trellisldp:trellis-build-tools:0.1.1'
 }
 
