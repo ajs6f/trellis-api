@@ -33,7 +33,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.trellisldp.vocabulary.Trellis;
 
 /**
  * @author acoburn
@@ -44,6 +43,7 @@ public class ResourceTest {
     private static final RDF rdf = new SimpleRDF();
 
     private final IRI identifier = rdf.createIRI("trellis:repository/resource");
+    private final IRI prefer = rdf.createIRI("http://example.org/prefer/Custom");
 
     @Mock
     private Resource mockResource;
@@ -71,8 +71,8 @@ public class ResourceTest {
     @Test
     public void testResource() {
         assertEquals(0L, mockResource.getContains().count());
-        assertEquals(0L, mockResource.stream(Trellis.PreferUserManaged).count());
-        assertEquals(0L, mockResource.stream(singleton(Trellis.PreferAudit)).count());
+        assertEquals(0L, mockResource.stream(prefer).count());
+        assertEquals(0L, mockResource.stream(singleton(prefer)).count());
         assertEquals(empty(), mockResource.getMembershipResource());
         assertEquals(empty(), mockResource.getMemberRelation());
         assertEquals(empty(), mockResource.getMemberOfRelation());
