@@ -152,25 +152,6 @@ public interface Resource {
     }
 
     /**
-     * Test whether this resource is an LDP Page
-     * @return true if this is an LDP Page; false otherwise
-     */
-    default Boolean isPage() {
-        return false;
-    }
-
-    /**
-     * Get the IRI for the next LDP Page
-     *
-     * <p>Note: a non-paged representation will return an empty {@link Optional} value.</p>
-     *
-     * @return the IRI for the next page
-     */
-    default Optional<IRI> getNext() {
-        return empty();
-    }
-
-    /**
      * Get the ldp:inbox for this resource, if one exists
      *
      * <p>Note: if an ldp:inbox value does not exist for this resource,
@@ -183,10 +164,7 @@ public interface Resource {
     }
 
     /**
-     * Get the acl:accessControl IRI, if one exists
-     *
-     * <p>Note: if there is no acl:accessControl value for this resource,
-     * an empty {@link Optional} value will be returned.</p>
+     * Get the effective ACL resource, if one exists
      *
      * @return an IRI used for access control
      */

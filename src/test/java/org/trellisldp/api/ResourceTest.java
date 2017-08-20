@@ -59,8 +59,6 @@ public class ResourceTest {
         doCallRealMethod().when(mockResource).stream(anyCollection());
         doCallRealMethod().when(mockResource).getBinary();
         doCallRealMethod().when(mockResource).isMemento();
-        doCallRealMethod().when(mockResource).isPage();
-        doCallRealMethod().when(mockResource).getNext();
         doCallRealMethod().when(mockResource).getInbox();
         doCallRealMethod().when(mockResource).getAcl();
         doCallRealMethod().when(mockResource).getAnnotationService();
@@ -80,8 +78,6 @@ public class ResourceTest {
         assertEquals(empty(), mockResource.getMemberRelation());
         assertEquals(empty(), mockResource.getBinary());
         assertFalse(mockResource.isMemento());
-        assertFalse(mockResource.isPage());
-        assertEquals(empty(), mockResource.getNext());
         assertEquals(empty(), mockResource.getInbox());
         assertEquals(empty(), mockResource.getAcl());
         assertEquals(empty(), mockResource.getAnnotationService());
