@@ -60,7 +60,6 @@ public class ResourceTest {
         doCallRealMethod().when(mockResource).getBinary();
         doCallRealMethod().when(mockResource).isMemento();
         doCallRealMethod().when(mockResource).getInbox();
-        doCallRealMethod().when(mockResource).getAcl();
         doCallRealMethod().when(mockResource).getAnnotationService();
 
         when(mockResource.stream()).thenAnswer((x) -> Stream.empty());
@@ -79,7 +78,6 @@ public class ResourceTest {
         assertEquals(empty(), mockResource.getBinary());
         assertFalse(mockResource.isMemento());
         assertEquals(empty(), mockResource.getInbox());
-        assertEquals(empty(), mockResource.getAcl());
         assertEquals(empty(), mockResource.getAnnotationService());
     }
 }

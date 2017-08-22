@@ -164,15 +164,6 @@ public interface Resource {
     }
 
     /**
-     * Get the effective ACL resource, if one exists
-     *
-     * @return an IRI used for access control
-     */
-    default Optional<IRI> getAcl() {
-        return empty();
-    }
-
-    /**
      * Get the rdf:type(s) for this resource
      * @return a stream of RDF Types
      */
