@@ -2,17 +2,17 @@ language: java
 sudo: required
 dist: trusty
 group: edge
+
+addons:
+  apt:
+    packages:
+      - oracle-java9-installer
+
 jdk:
   - oraclejdk8
   - oraclejdk9
-before_install:
-  - if [[ ${TRAVIS_JDK_VERSION} == "openjdk9" ]]; then jdk_switcher use openjdk9; fi
-  - gradle -version
 
 matrix:
-  include:
-    - jdk: oraclejdk9
-      env: JAVA_HOME=
   allow_failures:
     - jdk: oraclejdk9
 
