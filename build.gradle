@@ -83,6 +83,7 @@ jar {
         vendor project.vendor
         license project.license
 
+        instruction 'Automatic-Module-Name', 'org.trellisldp.api'
         instruction 'Import-Package', '*'
         instruction 'Export-Package', "org.trellisldp.api;version=${projectOsgiVersion}"
     }
