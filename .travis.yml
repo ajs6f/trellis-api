@@ -4,6 +4,7 @@ dist: trusty
 group: edge
 jdk:
   - oraclejdk8
+  - oraclejdk9
 
 after_success:
   - ./gradlew jacocoTestReport coveralls
