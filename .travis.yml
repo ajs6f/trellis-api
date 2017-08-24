@@ -3,8 +3,8 @@ sudo: required
 dist: trusty
 group: edge
 before_install:
-  - if [[ ${TRAVIS_JDK_VERSION} == "openjdk9" ]]; then jdk_switcher use openjdk9; fi
-  - if [[ ${TRAVIS_JDK_VERSION} == "oraclejdk9" ]]; then jdk_switcher use openjdk9; fi
+  - echo $TRAVIS_JDK_VERSION
+  - echo $JAVA_HOME
   - gradle -version
 jdk:
   - oraclejdk8
