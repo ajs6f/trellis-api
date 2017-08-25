@@ -103,7 +103,6 @@ compileTestJava {
 
 test {
     inputs.property("moduleName", moduleName)
-    println files(sourceSets.test.java.outputDir).asPath
     doFirst {
         jvmArgs = [
             '--module-path', classpath.asPath,
