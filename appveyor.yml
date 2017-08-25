@@ -1,7 +1,12 @@
 version: '{build}'
 skip_tags: true
+
 build_script:
     - gradlew.bat assemble
+
+branches:
+  only:
+    - master
 
 test_script:
     - gradlew.bat check
