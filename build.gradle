@@ -15,9 +15,8 @@ apply plugin: 'checkstyle'
 apply plugin: 'com.github.hierynomus.license'
 apply plugin: 'jacoco'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
+sourceCompatibility = 9
+targetCompatibility = 9
 
 group = 'org.trellisldp'
 description = 'Trellis API'
@@ -57,6 +56,8 @@ dependencies {
     testImplementation group: 'junit', name: 'junit', version: junitVersion
     testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
     testImplementation group: 'org.apache.commons', name: 'commons-rdf-simple', version: commonsRdfVersion
+    testImplementation group: "net.bytebuddy", name: 'byte-buddy', version: "1.7.2"
+    testImplementation group: "net.bytebuddy", name: "byte-buddy-agent", version: "1.7.2"
 
     buildToolsConfig 'org.trellisldp:trellis-build-tools:0.2.0'
 }
@@ -75,6 +76,44 @@ gradle.projectsEvaluated {
 
 release {
     tagTemplate = '$name-$version'
+}
+
+compileJava {
+    inputs.property("moduleName", moduleName)
+    doFirst {
+        options.compilerArgs = [
+            '--module-path', classpath.asPath,
+        ]
+        classpath = files()
+    }
+}
+
+compileTestJava {
+    inputs.property("moduleName", moduleName)
+    doFirst {
+        options.compilerArgs = [
+            '--module-path', classpath.asPath,
+            '--add-modules', 'junit',
+            '--add-reads', "$moduleName=junit",
+            '--patch-module', "$moduleName=" + files(sourceSets.test.java.srcDirs).asPath,
+        ]
+        classpath = files()
+    }
+}
+
+test {
+    inputs.property("moduleName", moduleName)
+    println files(sourceSets.test.java.outputDir).asPath
+    doFirst {
+        jvmArgs = [
+            '--module-path', classpath.asPath,
+            '--add-modules', 'ALL-MODULE-PATH',
+            '--add-reads', "$moduleName=junit",
+            '--add-opens', "$moduleName/$moduleName=mockito.core",
+            '--patch-module', "$moduleName=" + files(sourceSets.test.java.outputDir).asPath,
+        ]
+        classpath = files()
+    }
 }
 
 jar {
@@ -224,6 +263,10 @@ sonarqube {
         property "sonar.links.issue", "https://github.com/trellis-ldp/trellis-api/issues"
         property "sonar.links.scm_dev", "scm:git:git@github.com:trellis-ldp/trellis-api.git"
     }
+}
+
+javadoc {
+    exclude "module-info.java"
 }
 
 task docs(type: Javadoc) {
