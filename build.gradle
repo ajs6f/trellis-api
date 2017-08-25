@@ -23,6 +23,7 @@ group = 'org.trellisldp'
 description = 'Trellis API'
 
 ext {
+    moduleName = 'org.trellisldp.api'
     vendor = 'Trellis LDP'
     homepage = 'http://www.trellisldp.org'
     docURL = 'http://www.trellisldp.org/apidocs'
@@ -83,9 +84,9 @@ jar {
         vendor project.vendor
         license project.license
 
-        instruction 'Automatic-Module-Name', 'org.trellisldp.api'
+        instruction 'Automatic-Module-Name', moduleName
         instruction 'Import-Package', '*'
-        instruction 'Export-Package', "org.trellisldp.api;version=${projectOsgiVersion}"
+        instruction 'Export-Package', "${moduleName};version=${projectOsgiVersion}"
     }
 }
 
