@@ -50,7 +50,6 @@ public class ResourceTest {
 
     @Before
     public void setUp() {
-        doCallRealMethod().when(mockResource).getContains();
         doCallRealMethod().when(mockResource).getMembershipResource();
         doCallRealMethod().when(mockResource).getMemberRelation();
         doCallRealMethod().when(mockResource).getMemberOfRelation();
@@ -67,7 +66,6 @@ public class ResourceTest {
 
     @Test
     public void testResource() {
-        assertEquals(0L, mockResource.getContains().count());
         assertEquals(0L, mockResource.stream(prefer).count());
         assertEquals(0L, mockResource.stream(singleton(prefer)).count());
         assertEquals(empty(), mockResource.getMembershipResource());
