@@ -47,17 +47,6 @@ public interface Resource {
     IRI getInteractionModel();
 
     /**
-     * Retrieve a stream of resources contained by this resource
-     *
-     * <p>Note: Non-Container resources will always return an empty stream.</p>
-     *
-     * @return a stream of contained resources
-     */
-    default Stream<IRI> getContains() {
-        return Stream.empty();
-    }
-
-    /**
      * Retrieve the membership resource if this is an LDP Direct or Indirect container
      *
      * <p>Note: Other resource types will always return an empty {@link Optional} value.</p>
@@ -102,10 +91,10 @@ public interface Resource {
     }
 
     /**
-     * Retrieve a stream of Mementos for this resource
+     * Retrieve a collection of Mementos for this resource
      * @return a stream of known Mementos
      */
-    Stream<VersionRange> getMementos();
+    Collection<VersionRange> getMementos();
 
     /**
      * Retrieve the RDF Quads for a resource
@@ -165,9 +154,9 @@ public interface Resource {
 
     /**
      * Get the rdf:type(s) for this resource
-     * @return a stream of RDF Types
+     * @return a collection of RDF Types
      */
-    Stream<IRI> getTypes();
+    Collection<IRI> getTypes();
 
     /**
      * Get the IRI for the resource's annotation service
