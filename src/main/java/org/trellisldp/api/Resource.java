@@ -18,6 +18,7 @@ import static java.util.Optional.empty;
 
 import java.time.Instant;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -94,7 +95,7 @@ public interface Resource {
      * Retrieve a collection of Mementos for this resource
      * @return a stream of known Mementos
      */
-    Collection<VersionRange> getMementos();
+    List<VersionRange> getMementos();
 
     /**
      * Retrieve the RDF Quads for a resource
