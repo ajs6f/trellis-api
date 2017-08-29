@@ -176,4 +176,10 @@ public interface Resource {
      * @return the last-modified date
      */
     Instant getModified();
+
+    /**
+     * Test whether this resource has an ACL resource
+     * @return true if this resource has and ACL resource; false otherwise
+     */
+    Boolean hasAcl();
 }
