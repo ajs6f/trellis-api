@@ -14,15 +14,13 @@
 package org.trellisldp.api;
 
 import static java.util.Collections.singleton;
-import static java.util.Optional.empty;
+import static java.util.stream.Stream.empty;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyCollection;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.when;
-
-import java.util.stream.Stream;
 
 import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
@@ -61,21 +59,21 @@ public class ResourceTest {
         doCallRealMethod().when(mockResource).getInbox();
         doCallRealMethod().when(mockResource).getAnnotationService();
 
-        when(mockResource.stream()).thenAnswer((x) -> Stream.empty());
+        when(mockResource.stream()).thenAnswer((x) -> empty());
     }
 
     @Test
     public void testResource() {
         assertEquals(0L, mockResource.stream(prefer).count());
         assertEquals(0L, mockResource.stream(singleton(prefer)).count());
-        assertEquals(empty(), mockResource.getMembershipResource());
-        assertEquals(empty(), mockResource.getMemberRelation());
-        assertEquals(empty(), mockResource.getMemberOfRelation());
-        assertEquals(empty(), mockResource.getInsertedContentRelation());
-        assertEquals(empty(), mockResource.getMemberRelation());
-        assertEquals(empty(), mockResource.getBinary());
+        assertFalse(mockResource.getMembershipResource().isPresent());
+        assertFalse(mockResource.getMemberRelation().isPresent());
+        assertFalse(mockResource.getMemberOfRelation().isPresent());
+        assertFalse(mockResource.getInsertedContentRelation().isPresent());
+        assertFalse(mockResource.getMemberRelation().isPresent());
+        assertFalse(mockResource.getBinary().isPresent());
         assertFalse(mockResource.isMemento());
-        assertEquals(empty(), mockResource.getInbox());
-        assertEquals(empty(), mockResource.getAnnotationService());
+        assertFalse(mockResource.getInbox().isPresent());
+        assertFalse(mockResource.getAnnotationService().isPresent());
     }
 }

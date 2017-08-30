@@ -14,9 +14,9 @@
 package org.trellisldp.api;
 
 import static java.time.Instant.parse;
-import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.time.Instant;
 
@@ -50,8 +50,8 @@ public class BinaryTest {
     public void testBinaryWithOptionalArgs() {
         final Binary binary = new Binary(identifier, modified, null, null);
         assertEquals(identifier, binary.getIdentifier());
-        assertEquals(empty(), binary.getMimeType());
-        assertEquals(empty(), binary.getSize());
+        assertFalse(binary.getMimeType().isPresent());
+        assertFalse(binary.getSize().isPresent());
         assertEquals(modified, binary.getModified());
     }
 
