@@ -2,9 +2,6 @@ language: java
 sudo: required
 dist: trusty
 group: edge
-branches:
-  except:
-    - jdk9
 
 addons:
   apt:
@@ -12,8 +9,5 @@ addons:
       - oracle-java9-installer
 
 jdk:
-  - oraclejdk8
   - oraclejdk9
 
-after_success:
-  - ./gradlew jacocoTestReport coveralls
