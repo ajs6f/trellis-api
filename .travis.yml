@@ -12,12 +12,9 @@ addons:
     token:
       secure: "orW7iKDT8mPqXr3ZsowpPYiof+9OMOptXQjOZXz/bRI/Yz8V57FMvKSP/Uvv7jpnNJePo+8erES0ktdvVMJ349/sn99n/TY+I/f837pRs263QUY+B2XxQQyOxrDWv6yR5ryJ+YIkAJbNSFNOOVf1AeP/2ziQTt0RhJmY4HgYgY3IT14pehByaPhcCInnJ99Dogsb2IntnRP4XQzZu4khl821YTd9+CSCiAxygIJxmsmSNUJlR9OGPrYXGoBEfhSTEUXc4D/vv+NyQyJppnHO5Y02uv/1xXouPR3/XVTmCdVygjDYZKdIm5UD11T6WQbcSm67qr/WdkMoHBW48HLNqxfDAwWg3XnfJy2q75Pj6xlC3wHGpxAim2Z6Vq+VYeXoBwyOW7pct8PNw4oqKgxhqbyHvtl+8k8jY3nFxn45ABYdn1oV2G4bd1qBRVe9CZ9lF6LyyZuWr6+PuxLr77BLuy0Dy4dToPSPxozdTjOhjd74fhjMlw9GRZ/ZkD1j2F74CB9bHp9Tyv87y+4jHBh91mJRGRU7/5V8YuHE4V8Q5wSB8fYO4rXwrUSZxGvgCQPMaicpk9uFNCPLtY65R0OOocyFgpKr4IE7j/l/RX1KfYxgzcZirfNd43CMfKosUnBbZEzSffTiaxKsI79cnnv2lUGs2F8Zj/3ZuFqmd40lFpQ="
 
-script:
-  - sonar-scanner
-
 jdk:
   - oraclejdk8
   - oraclejdk9
 
 after_success:
-  - ./gradlew jacocoTestReport coveralls
+  - ./gradlew jacocoTestReport coveralls sonarqube
