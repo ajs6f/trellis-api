@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"org.trellisldp.api","l":"Binary"},{"p":"org.trellisldp.api","l":"Resource"},{"p":"org.trellisldp.api","l":"VersionRange"}]
