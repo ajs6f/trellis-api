@@ -101,14 +101,14 @@ public interface Resource {
      * Retrieve the RDF Quads for a resource
      * @return the RDF quads
      */
-    Stream<Quad> stream();
+    Stream<? extends Quad> stream();
 
     /**
      * Retrieve the RDF Triples for a given named graph
      * @param graphName the named graph
      * @return the RDF triples
      */
-    default Stream<Triple> stream(IRI graphName) {
+    default Stream<? extends Triple> stream(IRI graphName) {
         return stream(singleton(graphName));
     }
 
@@ -117,7 +117,7 @@ public interface Resource {
      * @param graphNames the named graphs
      * @return the RDF triples
      */
-    default Stream<Triple> stream(Collection<IRI> graphNames) {
+    default Stream<? extends Triple> stream(Collection<IRI> graphNames) {
         return stream().filter(quad -> quad.getGraphName().filter(graphNames::contains).isPresent())
             .map(Quad::asTriple);
     }
