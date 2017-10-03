@@ -31,6 +31,7 @@ ext {
 
     /* Dependencies */
     commonsRdfVersion = '0.3.0-incubating'
+    trellisVocabularyVersion = '0.1.0'
 
     /* Testing */
     junitVersion = '4.12'
@@ -54,6 +55,8 @@ jacocoTestReport {
 
 dependencies {
     api group: 'org.apache.commons', name: 'commons-rdf-api', version: commonsRdfVersion
+
+    implementation group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVocabularyVersion
 
     testImplementation group: 'junit', name: 'junit', version: junitVersion
     testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
