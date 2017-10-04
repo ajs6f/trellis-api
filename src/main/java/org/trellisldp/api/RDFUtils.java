@@ -36,6 +36,7 @@ import org.trellisldp.vocabulary.LDP;
  */
 public final class RDFUtils {
 
+    // TODO - JDK9 ServiceLoader::findFirst
     private static RDF rdf = ServiceLoader.load(RDF.class).iterator().next();
 
     /**
