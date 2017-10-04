@@ -13,6 +13,11 @@
  */
 package org.trellisldp.api;
 
+import java.util.List;
+
+import org.apache.commons.rdf.api.IRI;
+import org.apache.commons.rdf.api.Quad;
+
 /**
  * @author acoburn
  */
