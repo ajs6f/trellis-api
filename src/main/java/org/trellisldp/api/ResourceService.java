@@ -95,6 +95,7 @@ public interface ResourceService {
      * List the resources in the partition
      * @param partition the partition
      * @return a stream of RDF Triples, containing the resource an its LDP type
+     * @deprecated The {@link scan(String) scan} method should be used instead.
      */
     @Deprecated
     Stream<? extends Triple> list(String partition);
@@ -139,6 +140,7 @@ public interface ResourceService {
      * @param <T> the type of RDF term
      * @param term the RDF term
      * @return the "internal" RDF term
+     * @deprecated The {@link #toInternal(RDFTerm, String)} method should be used instead.
      */
     @Deprecated
     default <T extends RDFTerm> T toInternal(final T term) {
@@ -170,6 +172,7 @@ public interface ResourceService {
      * @param <T> the type of RDF term
      * @param term the RDF term
      * @return the "external" RDF term
+     * @deprecated The {@link #toExternal(RDFTerm, String)} method should be used instead.
      */
     @Deprecated
     default <T extends RDFTerm> T toExternal(final T term) {

@@ -77,6 +77,7 @@ public final class RDFUtils {
      * Get all of the LDP resource (super) types for the given LDP interaction model
      * @param interactionModel the interaction model
      * @return a stream of types
+     * @deprecated This method is available in the trellis-http package.
      */
     @Deprecated
     public static Stream<IRI> ldpResourceTypes(final IRI interactionModel) {
