@@ -15,6 +15,7 @@ package org.trellisldp.api;
 
 import static java.util.Optional.of;
 import static org.trellisldp.api.RDFUtils.TRELLIS_BNODE_PREFIX;
+import static org.trellisldp.api.RDFUtils.TRELLIS_PREFIX;
 import static org.trellisldp.api.RDFUtils.getInstance;
 
 import java.time.Instant;
@@ -91,11 +92,19 @@ public interface ResourceService {
     Stream<IRI> purge(IRI identifier);
 
     /**
-     * Get a list of resources in the partition
+     * List the resources in the partition
+     * @param partition the partition
+     * @return a stream of RDF Triples, containing the resource an its LDP type
+     */
+    @Deprecated
+    Stream<? extends Triple> list(String partition);
+
+    /**
+     * Scan the resources in the partition
      * @param partition the partition
      * @return a stream of RDF Triples, containing the resource and its LDP type
      */
-    Stream<? extends Triple> list(String partition);
+    Stream<? extends Triple> scan(String partition);
 
     /**
      * Skolemize a blank node
@@ -131,9 +140,30 @@ public interface ResourceService {
      * @param term the RDF term
      * @return the "internal" RDF term
      */
+    @Deprecated
     default <T extends RDFTerm> T toInternal(final T term) {
         return term;
     }
+
+    /**
+     * Return an "internal" representation of an RDF term
+     * @param <T> the type of RDF term
+     * @param term the RDF term
+     * @param baseUrl the base URL of the domain
+     * @return the "internal" RDF term
+     */
+    default <T extends RDFTerm> T toInternal(final T term, final String baseUrl) {
+        if (term instanceof IRI) {
+            final String iri = ((IRI) term).getIRIString();
+            if (iri.startsWith(baseUrl)) {
+                @SuppressWarnings("unchecked")
+                final T t = (T) getInstance().createIRI(TRELLIS_PREFIX + iri.substring(baseUrl.length()));
+                return t;
+            }
+        }
+        return term;
+    }
+
 
     /**
      * Return an "external" representation of an RDF term
@@ -141,7 +171,27 @@ public interface ResourceService {
      * @param term the RDF term
      * @return the "external" RDF term
      */
+    @Deprecated
     default <T extends RDFTerm> T toExternal(final T term) {
+        return term;
+    }
+
+    /**
+     * Return an "external" representation of an RDF term
+     * @param <T> the type of RDF term
+     * @param term the RDF term
+     * @param baseUrl the base URL of the domain
+     * @return the "external" RDF term
+     */
+    default <T extends RDFTerm> T toExternal(final T term, final String baseUrl) {
+        if (term instanceof IRI) {
+            final String iri = ((IRI) term).getIRIString();
+            if (iri.startsWith(TRELLIS_PREFIX)) {
+                @SuppressWarnings("unchecked")
+                final T t = (T) getInstance().createIRI(baseUrl + iri.substring(TRELLIS_PREFIX.length()));
+                return t;
+            }
+        }
         return term;
     }
 
@@ -152,7 +202,7 @@ public interface ResourceService {
      * @return a stream of quads, where each named graph refers to the resource identifier
      */
     default Stream<? extends Quad> export(final String partition, final Collection<IRI> graphNames) {
-        return list(partition).map(Triple::getSubject).filter(x -> x instanceof IRI).map(x -> (IRI) x)
+        return scan(partition).map(Triple::getSubject).filter(x -> x instanceof IRI).map(x -> (IRI) x)
             // TODO - JDK9 optional to stream
             .flatMap(id -> get(id).map(Stream::of).orElseGet(Stream::empty))
             .flatMap(resource -> resource.stream(graphNames).map(q ->
