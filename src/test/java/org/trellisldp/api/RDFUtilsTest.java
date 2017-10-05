@@ -35,6 +35,7 @@ public class RDFUtilsTest {
     }
 
     @Test
+    @SuppressWarnings("deprecation")
     public void testLdpResourceTypes() {
         assertTrue(RDFUtils.ldpResourceTypes(LDP.BasicContainer).anyMatch(LDP.Resource::equals));
         assertTrue(RDFUtils.ldpResourceTypes(LDP.BasicContainer).anyMatch(LDP.RDFSource::equals));

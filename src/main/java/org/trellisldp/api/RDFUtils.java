@@ -78,6 +78,7 @@ public final class RDFUtils {
      * @param interactionModel the interaction model
      * @return a stream of types
      */
+    @Deprecated
     public static Stream<IRI> ldpResourceTypes(final IRI interactionModel) {
         return of(interactionModel).filter(type -> RDFUtils.superClassOf.containsKey(type) || LDP.Resource.equals(type))
             .flatMap(type -> concat(ldpResourceTypes(RDFUtils.superClassOf.get(type)), of(type)));
