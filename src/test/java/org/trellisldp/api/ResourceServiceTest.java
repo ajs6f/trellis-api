@@ -62,14 +62,11 @@ public class ResourceServiceTest {
     private static Resource mockResource;
 
     @Before
-    @SuppressWarnings("deprecation")
     public void setUp() {
         doCallRealMethod().when(mockResourceService).skolemize(any());
         doCallRealMethod().when(mockResourceService).unskolemize(any());
         doCallRealMethod().when(mockResourceService).getContainer(any());
         doCallRealMethod().when(mockResourceService).export(any(), any());
-        doCallRealMethod().when(mockResourceService).toInternal(any());
-        doCallRealMethod().when(mockResourceService).toExternal(any());
         doCallRealMethod().when(mockResourceService).toInternal(any(), any());
         doCallRealMethod().when(mockResourceService).toExternal(any(), any());
 
@@ -122,7 +119,6 @@ public class ResourceServiceTest {
     }
 
     @Test
-    @SuppressWarnings("deprecation")
     public void testInternalExternal() {
         final String baseUrl = "http://example.com/";
         final IRI external = rdf.createIRI(baseUrl + "repository/resource");
@@ -132,11 +128,6 @@ public class ResourceServiceTest {
         assertEquals(external, mockResourceService.toExternal(internal, baseUrl));
         assertEquals(other, mockResourceService.toInternal(other, baseUrl));
         assertEquals(other, mockResourceService.toExternal(other, baseUrl));
-
-        assertEquals(external, mockResourceService.toExternal(external));
-        assertEquals(external, mockResourceService.toInternal(external));
-        assertEquals(internal, mockResourceService.toExternal(internal));
-        assertEquals(internal, mockResourceService.toInternal(internal));
 
         final BlankNode bnode = rdf.createBlankNode();
         assertEquals(bnode, mockResourceService.toInternal(bnode, baseUrl));

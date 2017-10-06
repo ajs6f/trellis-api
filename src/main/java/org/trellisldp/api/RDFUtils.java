@@ -13,20 +13,9 @@
  */
 package org.trellisldp.api;
 
-import static java.util.Collections.unmodifiableMap;
-import static java.util.stream.Stream.concat;
-import static java.util.stream.Stream.of;
-import static org.trellisldp.vocabulary.RDF.type;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ServiceLoader;
-import java.util.stream.Stream;
 
-import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
-
-import org.trellisldp.vocabulary.LDP;
 
 /**
  * The RDFUtils class provides a set of convenience methods related to
@@ -50,39 +39,11 @@ public final class RDFUtils {
     public static final String TRELLIS_BNODE_PREFIX = "trellis:bnode/";
 
     /**
-     * A mapping of LDP types to their supertype
-     */
-    public static final Map<IRI, IRI> superClassOf;
-
-    static {
-        final Map<IRI, IRI> data = new HashMap<>();
-        data.put(LDP.NonRDFSource, LDP.Resource);
-        data.put(LDP.RDFSource, LDP.Resource);
-        data.put(LDP.Container, LDP.RDFSource);
-        data.put(LDP.BasicContainer, LDP.Container);
-        data.put(LDP.DirectContainer, LDP.Container);
-        data.put(LDP.IndirectContainer, LDP.Container);
-        superClassOf = unmodifiableMap(data);
-    }
-
-    /**
      * Get the Commons RDF instance in use
      * @return the RDF instance
      */
     public static RDF getInstance() {
         return rdf;
-    }
-
-    /**
-     * Get all of the LDP resource (super) types for the given LDP interaction model
-     * @param interactionModel the interaction model
-     * @return a stream of types
-     * @deprecated This method is available in the trellis-http package.
-     */
-    @Deprecated
-    public static Stream<IRI> ldpResourceTypes(final IRI interactionModel) {
-        return of(interactionModel).filter(type -> RDFUtils.superClassOf.containsKey(type) || LDP.Resource.equals(type))
-            .flatMap(type -> concat(ldpResourceTypes(RDFUtils.superClassOf.get(type)), of(type)));
     }
 
     private RDFUtils() {

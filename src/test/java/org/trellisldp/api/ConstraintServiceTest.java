@@ -53,8 +53,8 @@ public class ConstraintServiceTest {
     }
 
     private static Stream<IRI> ldpResourceTypes(final IRI interactionModel) {
-        return of(interactionModel).filter(type -> RDFUtils.superClassOf.containsKey(type) || LDP.Resource.equals(type))
-            .flatMap(type -> concat(ldpResourceTypes(RDFUtils.superClassOf.get(type)), of(type)));
+        return of(interactionModel).filter(type -> superClassOf.containsKey(type) || LDP.Resource.equals(type))
+            .flatMap(type -> concat(ldpResourceTypes(superClassOf.get(type)), of(type)));
     }
 
     @Test

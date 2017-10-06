@@ -92,15 +92,6 @@ public interface ResourceService {
     Stream<IRI> purge(IRI identifier);
 
     /**
-     * List the resources in the partition
-     * @param partition the partition
-     * @return a stream of RDF Triples, containing the resource an its LDP type
-     * @deprecated The {@link scan(String) scan} method should be used instead.
-     */
-    @Deprecated
-    Stream<? extends Triple> list(String partition);
-
-    /**
      * Scan the resources in the partition
      * @param partition the partition
      * @return a stream of RDF Triples, containing the resource and its LDP type
@@ -139,18 +130,6 @@ public interface ResourceService {
      * Return an "internal" representation of an RDF term
      * @param <T> the type of RDF term
      * @param term the RDF term
-     * @return the "internal" RDF term
-     * @deprecated The {@link #toInternal(RDFTerm, String)} method should be used instead.
-     */
-    @Deprecated
-    default <T extends RDFTerm> T toInternal(final T term) {
-        return term;
-    }
-
-    /**
-     * Return an "internal" representation of an RDF term
-     * @param <T> the type of RDF term
-     * @param term the RDF term
      * @param baseUrl the base URL of the domain
      * @return the "internal" RDF term
      */
@@ -163,19 +142,6 @@ public interface ResourceService {
                 return t;
             }
         }
-        return term;
-    }
-
-
-    /**
-     * Return an "external" representation of an RDF term
-     * @param <T> the type of RDF term
-     * @param term the RDF term
-     * @return the "external" RDF term
-     * @deprecated The {@link #toExternal(RDFTerm, String)} method should be used instead.
-     */
-    @Deprecated
-    default <T extends RDFTerm> T toExternal(final T term) {
         return term;
     }
 

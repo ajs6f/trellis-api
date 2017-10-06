@@ -13,14 +13,11 @@
  */
 package org.trellisldp.api;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.trellisldp.api.RDFUtils.getInstance;
 
 import org.apache.commons.rdf.api.RDF;
 import org.junit.Test;
-import org.trellisldp.vocabulary.LDP;
 
 /**
  * @author acoburn
@@ -32,16 +29,5 @@ public class RDFUtilsTest {
     @Test
     public void testGetInstance() {
         assertNotNull(rdf);
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    public void testLdpResourceTypes() {
-        assertTrue(RDFUtils.ldpResourceTypes(LDP.BasicContainer).anyMatch(LDP.Resource::equals));
-        assertTrue(RDFUtils.ldpResourceTypes(LDP.BasicContainer).anyMatch(LDP.RDFSource::equals));
-        assertTrue(RDFUtils.ldpResourceTypes(LDP.BasicContainer).anyMatch(LDP.Container::equals));
-
-        assertTrue(RDFUtils.ldpResourceTypes(LDP.NonRDFSource).anyMatch(LDP.Resource::equals));
-        assertFalse(RDFUtils.ldpResourceTypes(LDP.NonRDFSource).anyMatch(LDP.RDFSource::equals));
     }
 }

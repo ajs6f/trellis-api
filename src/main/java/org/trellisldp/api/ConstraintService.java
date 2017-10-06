@@ -13,7 +13,7 @@
  */
 package org.trellisldp.api;
 
-import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.apache.commons.rdf.api.Graph;
 import org.apache.commons.rdf.api.IRI;
@@ -31,7 +31,7 @@ public interface ConstraintService {
      * @param interactionModel the interaction model
      * @param domain the domain of the resource
      * @param graph the graph
-     * @return any constraint violation on the graph
+     * @return any constraint violations on the graph
      */
-    Optional<ConstraintViolation> constrainedBy(IRI interactionModel, String domain, Graph graph);
+    Stream<ConstraintViolation> constrainedBy(IRI interactionModel, String domain, Graph graph);
 }
