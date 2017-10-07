@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="trellis-api-${project.version}">
 
-  <repository>mvn:org.trellisldp/trellis-vocabulary/${trellisVocabularyVersion}/xml/features</repository>
-
   <feature name="trellis-api" version="${project.version}">
     <details>Installs the Trellis API bundle</details>
 
-    <feature>trellis-vocabulary</feature>
+    <feature version="${trellisVocabularyVersionRange}">trellis-vocabulary</feature>
 
     <bundle dependency="true">mvn:org.apache.commons/commons-rdf-api/${commonsRdfVersion}</bundle>
 

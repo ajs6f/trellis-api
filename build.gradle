@@ -39,6 +39,7 @@ ext {
     jacocoVersion = '0.7.9'
 
     /* OSGi */
+    trellisVocabularyVersionRange = '[0.1,1)'
     spiflyVersion = '1.0.8'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
