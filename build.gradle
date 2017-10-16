@@ -35,9 +35,10 @@ ext {
 
     /* Testing */
     junitVersion = '5.0.1'
-    junitPlatform = '1.0.1'
+    junitPlatformVersion = '1.0.1'
     mockitoVersion = '2.11.0'
     jacocoVersion = '0.7.9'
+    apiguardianVersion = '1.0.0'
 
     /* OSGi */
     trellisVocabularyVersionRange = '[0.1,1)'
@@ -61,10 +62,11 @@ dependencies {
 
     implementation group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVocabularyVersion
 
-    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: junitPlatform
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: junitPlatformVersion
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
     testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
     testImplementation group: 'org.apache.commons', name: 'commons-rdf-simple', version: commonsRdfVersion
+    testCompile group: 'org.apiguardian', name: 'apiguardian-api', version: apiguardianVersion
 
     buildToolsConfig 'org.trellisldp:trellis-build-tools:0.2.0'
 }
