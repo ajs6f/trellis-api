@@ -17,8 +17,8 @@ import static java.util.Collections.unmodifiableMap;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
 import static java.util.stream.Stream.of;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.trellisldp.vocabulary.RDF.type;
 
 import java.util.HashMap;
@@ -27,13 +27,16 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import org.apache.commons.rdf.api.IRI;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import org.trellisldp.vocabulary.LDP;
 import org.trellisldp.vocabulary.RDFS;
 
 /**
  * @author acoburn
  */
+@RunWith(JUnitPlatform.class)
 public class ConstraintServiceTest {
 
     /**

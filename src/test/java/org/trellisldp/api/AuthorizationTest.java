@@ -13,8 +13,8 @@
  */
 package org.trellisldp.api;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.trellisldp.vocabulary.ACL;
 import org.trellisldp.vocabulary.PROV;
@@ -23,12 +23,15 @@ import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
 import org.apache.commons.rdf.simple.SimpleRDF;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 /**
  * @author acoburn
  */
+@RunWith(JUnitPlatform.class)
 public class AuthorizationTest {
 
     private static final RDF rdf = new SimpleRDF();
@@ -37,7 +40,7 @@ public class AuthorizationTest {
 
     private final IRI subject = rdf.createIRI("trellis:repository/resource");
 
-    @Before
+    @BeforeEach
     public void setUp() {
 
         final IRI other = rdf.createIRI("trellis:repository/other");

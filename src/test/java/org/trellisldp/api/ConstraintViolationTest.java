@@ -14,21 +14,24 @@
 package org.trellisldp.api;
 
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.trellisldp.vocabulary.Trellis.InvalidProperty;
 
 import org.apache.commons.rdf.api.RDF;
 import org.apache.commons.rdf.api.Triple;
 import org.apache.commons.rdf.simple.SimpleRDF;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import org.trellisldp.vocabulary.LDP;
 
 /**
  * @author acoburn
  */
+@RunWith(JUnitPlatform.class)
 public class ConstraintViolationTest {
 
     private static final RDF rdf = new SimpleRDF();

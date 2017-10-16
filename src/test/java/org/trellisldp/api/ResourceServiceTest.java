@@ -16,13 +16,14 @@ package org.trellisldp.api;
 import static java.util.Arrays.asList;
 import static java.util.Optional.of;
 import static java.util.stream.Collectors.toList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
 import static org.trellisldp.vocabulary.RDF.type;
 
 import java.util.HashSet;
@@ -37,11 +38,11 @@ import org.apache.commons.rdf.api.Quad;
 import org.apache.commons.rdf.api.RDF;
 import org.apache.commons.rdf.simple.SimpleRDF;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.trellisldp.vocabulary.DC;
 import org.trellisldp.vocabulary.LDP;
 import org.trellisldp.vocabulary.Trellis;
@@ -49,7 +50,7 @@ import org.trellisldp.vocabulary.Trellis;
 /**
  * @author acoburn
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(JUnitPlatform.class)
 public class ResourceServiceTest {
 
     private static final RDF rdf = new SimpleRDF();
@@ -61,8 +62,9 @@ public class ResourceServiceTest {
     @Mock
     private static Resource mockResource;
 
-    @Before
+    @BeforeEach
     public void setUp() {
+        initMocks(this);
         doCallRealMethod().when(mockResourceService).skolemize(any());
         doCallRealMethod().when(mockResourceService).unskolemize(any());
         doCallRealMethod().when(mockResourceService).getContainer(any());

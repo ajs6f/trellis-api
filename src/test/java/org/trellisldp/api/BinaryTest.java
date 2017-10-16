@@ -15,19 +15,22 @@ package org.trellisldp.api;
 
 import static java.time.Instant.parse;
 import static java.util.Optional.of;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.time.Instant;
 
 import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
 import org.apache.commons.rdf.simple.SimpleRDF;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 /**
  * @author acoburn
  */
+@RunWith(JUnitPlatform.class)
 public class BinaryTest {
 
     private final static RDF rdf = new SimpleRDF();

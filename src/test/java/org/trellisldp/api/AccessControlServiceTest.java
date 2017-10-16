@@ -13,26 +13,27 @@
  */
 package org.trellisldp.api;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
 import org.apache.commons.rdf.simple.SimpleRDF;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 /**
  * @author acoburn
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(JUnitPlatform.class)
 public class AccessControlServiceTest {
 
     private static final RDF rdf = new SimpleRDF();
@@ -45,8 +46,9 @@ public class AccessControlServiceTest {
     @Mock
     private Session mockSession;
 
-    @Before
+    @BeforeEach
     public void setUp() {
+        initMocks(this);
         doCallRealMethod().when(mockAccessControlService).canRead(any(), any());
         doCallRealMethod().when(mockAccessControlService).canWrite(any(), any());
         doCallRealMethod().when(mockAccessControlService).canAppend(any(), any());

@@ -14,15 +14,19 @@
 package org.trellisldp.api;
 
 import static java.time.Instant.parse;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.Instant;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 /**
  * @author acoburn
  */
+@RunWith(JUnitPlatform.class)
 public class VersionRangeTest {
 
     private final Instant from = parse("2015-04-18T10:30:00.00Z");
@@ -35,13 +39,13 @@ public class VersionRangeTest {
         assertEquals(until, range.getUntil());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testInvalidArguments1() {
-        new VersionRange(null, until);
+        assertThrows(NullPointerException.class, () -> new VersionRange(null, until));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testInvalidArguments2() {
-        new VersionRange(from, null);
+        assertThrows(NullPointerException.class, () -> new VersionRange(from, null));
     }
 }

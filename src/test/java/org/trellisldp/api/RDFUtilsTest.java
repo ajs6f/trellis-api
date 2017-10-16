@@ -13,15 +13,18 @@
  */
 package org.trellisldp.api;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.trellisldp.api.RDFUtils.getInstance;
 
 import org.apache.commons.rdf.api.RDF;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 /**
  * @author acoburn
  */
+@RunWith(JUnitPlatform.class)
 public class RDFUtilsTest {
 
     private static RDF rdf = getInstance();
