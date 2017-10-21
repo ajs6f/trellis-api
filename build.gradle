@@ -101,7 +101,7 @@ jar {
             osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)",
             osgi.serviceloader;
                 filter:="(osgi.serviceloader=org.apache.commons.rdf.api.RDF)";
-                resolution:=optional; cardinality:=at_least_one
+                resolution:=mandatory; cardinality:=at_least_one
             '''
     }
 }
