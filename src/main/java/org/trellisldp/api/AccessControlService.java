@@ -13,11 +13,9 @@
  */
 package org.trellisldp.api;
 
-import java.util.function.Predicate;
+import java.util.Set;
 
 import org.apache.commons.rdf.api.IRI;
-
-import org.trellisldp.vocabulary.ACL;
 
 /**
  * The AccessControlService provides methods for checking user access to given resources
@@ -31,51 +29,11 @@ import org.trellisldp.vocabulary.ACL;
 public interface AccessControlService {
 
     /**
-     * Test whether the resource is readable
-     * @param session the user session
+     * Get the allowable access modes for the given session
+     * to the specified resource.
      * @param identifier the resource identifier
-     * @return whether the user can read the identified resource
+     * @param session the agent's session
+     * @return a set of allowable access modes
      */
-    default Boolean canRead(Session session, IRI identifier) {
-        return anyMatch(session, identifier, ACL.Read::equals);
-    }
-
-    /**
-     * Test whether the resource is writeable
-     * @param session the user session
-     * @param identifier the resource identifier
-     * @return whether the user can write to identified resource
-     */
-    default Boolean canWrite(Session session, IRI identifier) {
-        return anyMatch(session, identifier, ACL.Write::equals);
-    }
-
-    /**
-     * Test whether the user can control the ACL for the given resource
-     * @param session the user session
-     * @param identifier the resource identifier
-     * @return whether the user can control the ACL for the identified resource
-     */
-    default Boolean canControl(Session session, IRI identifier) {
-        return anyMatch(session, identifier, ACL.Control::equals);
-    }
-
-    /**
-     * Test whether the user can append the given resource
-     * @param session the user session
-     * @param identifier the resource identifier
-     * @return whether the user can append the identified resource
-     */
-    default Boolean canAppend(Session session, IRI identifier) {
-        return anyMatch(session, identifier, ACL.Append::equals);
-    }
-
-    /**
-     * Test whether the given acl:Mode matches a given predicate
-     * @param session the user session
-     * @param identifier the resource identifier
-     * @param predicate the predicate used to test the Authorization mode
-     * @return Returns whether any elements of the Authorization stream match
-     */
-    Boolean anyMatch(Session session, IRI identifier, Predicate<IRI> predicate);
+    Set<IRI> getAccessModes(IRI identifier, Session session);
 }
