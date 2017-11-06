@@ -31,7 +31,6 @@ ext {
 
     /* Dependencies */
     commonsRdfVersion = '0.3.0-incubating'
-    trellisVocabularyVersion = '0.1.0'
 
     /* Testing */
     junitVersion = '5.0.1'
@@ -39,9 +38,9 @@ ext {
     mockitoVersion = '2.11.0'
     jacocoVersion = '0.7.9'
     apiguardianVersion = '1.0.0'
+    trellisVocabularyVersion = '0.1.0'
 
     /* OSGi */
-    trellisVocabularyVersionRange = '[0.1,1)'
     spiflyVersion = '1.0.8'
     projectOsgiVersion = project.version.replaceAll("-SNAPSHOT", ".SNAPSHOT")
 }
@@ -60,8 +59,7 @@ jacocoTestReport {
 dependencies {
     api group: 'org.apache.commons', name: 'commons-rdf-api', version: commonsRdfVersion
 
-    implementation group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVocabularyVersion
-
+    testImplementation group: 'org.trellisldp', name: 'trellis-vocabulary', version: trellisVocabularyVersion
     testImplementation group: 'org.apiguardian', name: 'apiguardian-api', version: apiguardianVersion
     testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: junitPlatformVersion
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
