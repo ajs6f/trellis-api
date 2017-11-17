@@ -13,10 +13,18 @@
  */
 package org.trellisldp.api;
 
+import static java.util.stream.Stream.generate;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.trellisldp.api.RDFUtils.getInstance;
+import static org.trellisldp.api.RDFUtils.toGraph;
+import static org.trellisldp.api.RDFUtils.toDataset;
 
+import org.apache.commons.rdf.api.Dataset;
+import org.apache.commons.rdf.api.Graph;
+import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.RDF;
+import org.apache.commons.text.RandomStringGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
@@ -27,10 +35,33 @@ import org.junit.runner.RunWith;
 @RunWith(JUnitPlatform.class)
 public class RDFUtilsTest {
 
-    private static RDF rdf = getInstance();
+    private static final RDF rdf = getInstance();
+    private static final Long size = 10000L;
+    private static final RandomStringGenerator generator = new RandomStringGenerator.Builder()
+        .withinRange('a', 'z').build();
 
     @Test
     public void testGetInstance() {
         assertNotNull(rdf);
+    }
+
+    @Test
+    public void testCollectGraph() {
+        final Graph graph = generate(() -> rdf.createTriple(getIRI(), getIRI(), getIRI()))
+            .parallel().limit(size).collect(toGraph());
+
+        assertTrue(size >= graph.size());
+    }
+
+    @Test
+    public void testCollectDataset() {
+        final Dataset dataset = generate(() -> rdf.createQuad(getIRI(), getIRI(), getIRI(), getIRI()))
+            .parallel().limit(size).collect(toDataset());
+
+        assertTrue(size >= dataset.size());
+    }
+
+    private IRI getIRI() {
+        return rdf.createIRI("ex:" + generator.generate(5));
     }
 }

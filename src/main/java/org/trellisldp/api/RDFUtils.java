@@ -13,9 +13,17 @@
  */
 package org.trellisldp.api;
 
-import java.util.ServiceLoader;
+import static java.util.stream.Collector.of;
+import static java.util.stream.Collector.Characteristics.UNORDERED;
 
+import java.util.ServiceLoader;
+import java.util.stream.Collector;
+
+import org.apache.commons.rdf.api.Dataset;
+import org.apache.commons.rdf.api.Graph;
+import org.apache.commons.rdf.api.Quad;
 import org.apache.commons.rdf.api.RDF;
+import org.apache.commons.rdf.api.Triple;
 
 /**
  * The RDFUtils class provides a set of convenience methods related to
@@ -44,6 +52,32 @@ public final class RDFUtils {
      */
     public static RDF getInstance() {
         return rdf;
+    }
+
+    /**
+     * Collect a stream of Triples into a Graph
+     * @return a graph
+     */
+    public static Collector<Triple, ?, Graph> toGraph() {
+        return of(rdf::createGraph, (g, t) -> g.add(t), (left, right) -> {
+            for (final Triple t : right.iterate()) {
+                left.add(t);
+            }
+            return left;
+        }, UNORDERED);
+    }
+
+    /**
+     * Collect a stream of Quads into a Dataset
+     * @return a dataset
+     */
+    public static Collector<Quad, ?, Dataset> toDataset() {
+        return of(rdf::createDataset, (d, q) -> d.add(q), (left, right) -> {
+            for (final Quad q : right.iterate()) {
+                left.add(q);
+            }
+            return left;
+        }, UNORDERED);
     }
 
     private RDFUtils() {

@@ -39,6 +39,8 @@ ext {
     jacocoVersion = '0.7.9'
     apiguardianVersion = '1.0.0'
     trellisVocabularyVersion = '0.1.0'
+    commonsTextVersion = '1.1'
+    jenaVersion = '3.5.0'
 
     /* OSGi */
     spiflyVersion = '1.0.8'
@@ -64,7 +66,9 @@ dependencies {
     testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: junitPlatformVersion
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
     testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
-    testImplementation group: 'org.apache.commons', name: 'commons-rdf-simple', version: commonsRdfVersion
+    testImplementation group: 'org.apache.commons', name: 'commons-rdf-jena', version: commonsRdfVersion
+    testImplementation group: 'org.apache.commons', name: 'commons-text', version: commonsTextVersion
+    testImplementation group: 'org.apache.jena', name: 'jena-osgi', version: jenaVersion
 
     buildToolsConfig 'org.trellisldp:trellis-build-tools:0.2.0'
 }
