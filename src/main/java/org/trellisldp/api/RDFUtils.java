@@ -59,7 +59,7 @@ public final class RDFUtils {
      * @return a graph
      */
     public static Collector<Triple, ?, Graph> toGraph() {
-        return of(rdf::createGraph, (g, t) -> g.add(t), (left, right) -> {
+        return of(rdf::createGraph, Graph::add, (left, right) -> {
             for (final Triple t : right.iterate()) {
                 left.add(t);
             }
@@ -72,7 +72,7 @@ public final class RDFUtils {
      * @return a dataset
      */
     public static Collector<Quad, ?, Dataset> toDataset() {
-        return of(rdf::createDataset, (d, q) -> d.add(q), (left, right) -> {
+        return of(rdf::createDataset, Dataset::add, (left, right) -> {
             for (final Quad q : right.iterate()) {
                 left.add(q);
             }
