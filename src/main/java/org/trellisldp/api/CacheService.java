@@ -13,6 +13,8 @@
  */
 package org.trellisldp.api;
 
+import java.util.function.Function;
+
 /**
  * A generalized caching service for Trellis
  *
@@ -23,14 +25,8 @@ public interface CacheService<K, V> {
     /**
      * Get a value from the cache
      * @param key the key
+     * @param mappingFunction attempts to compute a mapping for the specified key
      * @return a value for that key or null
      */
-    V get(K key);
-
-    /**
-     * Put a new value into the cache
-     * @param key the key
-     * @param value the value
-     */
-    void put(K key, V value);
+    V get(K key, Function<? super K, ? extends V> mappingFunction);
 }
