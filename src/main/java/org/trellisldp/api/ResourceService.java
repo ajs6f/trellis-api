@@ -17,6 +17,7 @@ import static java.util.Optional.of;
 import static org.trellisldp.api.RDFUtils.TRELLIS_BNODE_PREFIX;
 import static org.trellisldp.api.RDFUtils.TRELLIS_PREFIX;
 import static org.trellisldp.api.RDFUtils.getInstance;
+import static org.trellisldp.vocabulary.Trellis.PreferServerManaged;
 
 import java.time.Instant;
 import java.util.Collection;
@@ -30,6 +31,7 @@ import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.Quad;
 import org.apache.commons.rdf.api.RDFTerm;
 import org.apache.commons.rdf.api.Triple;
+import org.trellisldp.vocabulary.RDF;
 
 /**
  * The ResourceService provides methods for creating, retrieving and manipulating
@@ -60,7 +62,21 @@ public interface ResourceService {
      * @param dataset the dataset
      * @return whether the resource was added
      */
-    Boolean put(IRI identifier, Dataset dataset);
+    default Boolean put(IRI identifier, Dataset dataset) {
+        IRI ixnModel = (IRI) dataset.stream(of(PreferServerManaged), null, RDF.type, null)
+                .map(Quad::getObject).findFirst()
+                .orElseThrow(() -> new RuntimeRepositoryException("No interaction model present!"));
+        return put(identifier, ixnModel, dataset);
+    }
+
+    /**
+     * Put a resource into the repository
+     * @param identifier the identifier for the new resource
+     * @param ixnModel the LDP interaction model for this resource
+     * @param dataset the dataset
+     * @return whether the resource was added
+     */
+    Boolean put(IRI identifier, IRI ixnModel, Dataset quads); 
 
     /**
      * Get the identifier for the structurally-logical container for the resource
