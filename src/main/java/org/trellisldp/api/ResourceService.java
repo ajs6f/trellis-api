@@ -59,19 +59,6 @@ public interface ResourceService {
     /**
      * Put a resource into the repository
      * @param identifier the identifier for the new resource
-     * @param dataset the dataset
-     * @return whether the resource was added
-     */
-    default Boolean put(IRI identifier, Dataset dataset) {
-        IRI ixnModel = (IRI) dataset.stream(of(PreferServerManaged), null, RDF.type, null)
-                .map(Quad::getObject).findFirst()
-                .orElseThrow(() -> new RuntimeRepositoryException("No interaction model present!"));
-        return put(identifier, ixnModel, dataset);
-    }
-
-    /**
-     * Put a resource into the repository
-     * @param identifier the identifier for the new resource
      * @param ixnModel the LDP interaction model for this resource
      * @param dataset the dataset
      * @return whether the resource was added
