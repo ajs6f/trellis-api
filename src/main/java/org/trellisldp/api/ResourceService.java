@@ -21,6 +21,7 @@ import static org.trellisldp.api.RDFUtils.getInstance;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.concurrent.Future;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -61,7 +62,7 @@ public interface ResourceService {
      * @param dataset the dataset
      * @return whether the resource was added
      */
-    Boolean put(IRI identifier, IRI ixnModel, Dataset dataset); 
+    Future<Boolean> put(IRI identifier, IRI ixnModel, Dataset dataset);
 
     /**
      * Get the identifier for the structurally-logical container for the resource
