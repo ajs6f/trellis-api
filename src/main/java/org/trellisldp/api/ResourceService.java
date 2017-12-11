@@ -17,7 +17,6 @@ import static java.util.Optional.of;
 import static org.trellisldp.api.RDFUtils.TRELLIS_BNODE_PREFIX;
 import static org.trellisldp.api.RDFUtils.TRELLIS_PREFIX;
 import static org.trellisldp.api.RDFUtils.getInstance;
-import static org.trellisldp.vocabulary.Trellis.PreferServerManaged;
 
 import java.time.Instant;
 import java.util.Collection;
@@ -31,7 +30,6 @@ import org.apache.commons.rdf.api.IRI;
 import org.apache.commons.rdf.api.Quad;
 import org.apache.commons.rdf.api.RDFTerm;
 import org.apache.commons.rdf.api.Triple;
-import org.trellisldp.vocabulary.RDF;
 
 /**
  * The ResourceService provides methods for creating, retrieving and manipulating
