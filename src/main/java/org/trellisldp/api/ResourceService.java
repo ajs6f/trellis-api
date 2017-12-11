@@ -61,7 +61,7 @@ public interface ResourceService {
      * @param dataset the dataset
      * @return whether the resource was added
      */
-    Boolean put(IRI identifier, IRI ixnModel, Dataset quads); 
+    Boolean put(IRI identifier, IRI ixnModel, Dataset dataset); 
 
     /**
      * Get the identifier for the structurally-logical container for the resource
