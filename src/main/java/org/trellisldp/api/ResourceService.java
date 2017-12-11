@@ -21,6 +21,7 @@ import static org.trellisldp.api.RDFUtils.getInstance;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.concurrent.Future;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -57,10 +58,11 @@ public interface ResourceService {
     /**
      * Put a resource into the repository
      * @param identifier the identifier for the new resource
+     * @param ixnModel the LDP interaction model for this resource
      * @param dataset the dataset
      * @return whether the resource was added
      */
-    Boolean put(IRI identifier, Dataset dataset);
+    Future<Boolean> put(IRI identifier, IRI ixnModel, Dataset dataset);
 
     /**
      * Get the identifier for the structurally-logical container for the resource
