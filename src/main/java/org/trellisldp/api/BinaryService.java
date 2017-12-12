@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import org.apache.commons.rdf.api.IRI;
@@ -269,10 +268,4 @@ public interface BinaryService {
      * for each algorithm at https://www.iana.org/assignments/http-dig-alg/http-dig-alg.xhtml</p>
      */
     Optional<String> digest(String algorithm, InputStream stream);
-
-    /**
-     * An identifier supplier
-     * @return a supplier of identifiers for new resources
-     */
-    Supplier<String> getIdentifierSupplier();
 }
