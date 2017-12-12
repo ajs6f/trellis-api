@@ -94,11 +94,10 @@ public interface ResourceService {
     Stream<IRI> purge(IRI identifier);
 
     /**
-     * Scan the resources in the partition
-     * @param partition the partition
+     * Scan the resources
      * @return a stream of RDF Triples, containing the resource and its LDP type
      */
-    Stream<? extends Triple> scan(String partition);
+    Stream<? extends Triple> scan();
 
     /**
      * Skolemize a blank node
@@ -168,12 +167,11 @@ public interface ResourceService {
 
     /**
      * Export the complete repository as a stream of Quads
-     * @param partition the partition to export
      * @param graphNames the graph names to export
      * @return a stream of quads, where each named graph refers to the resource identifier
      */
-    default Stream<? extends Quad> export(final String partition, final Collection<IRI> graphNames) {
-        return scan(partition).map(Triple::getSubject).filter(x -> x instanceof IRI).map(x -> (IRI) x)
+    default Stream<? extends Quad> export(final Collection<IRI> graphNames) {
+        return scan().map(Triple::getSubject).filter(x -> x instanceof IRI).map(x -> (IRI) x)
             // TODO - JDK9 optional to stream
             .flatMap(id -> get(id).map(Stream::of).orElseGet(Stream::empty))
             .flatMap(resource -> resource.stream(graphNames).map(q ->
