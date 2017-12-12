@@ -51,7 +51,6 @@ public class BinaryServiceTest {
     private final IRI identifier = rdf.createIRI("trellis:repository/resource");
     private final IRI other = rdf.createIRI("trellis:repository/other");
     private final String checksum = "blahblahblah";
-    private final String partition = "repository";
 
     @Mock
     private BinaryService mockBinaryService;
@@ -71,35 +70,35 @@ public class BinaryServiceTest {
     @BeforeEach
     public void setUp() {
         initMocks(this);
-        doCallRealMethod().when(mockBinaryService).getContent(eq(partition), any());
-        doCallRealMethod().when(mockBinaryService).setContent(eq(partition), any(), any(), any());
-        doCallRealMethod().when(mockBinaryService).setContent(eq(partition), any(), any());
-        doCallRealMethod().when(mockBinaryService).exists(eq(partition), any());
-        doCallRealMethod().when(mockBinaryService).calculateDigest(eq(partition), any(), any());
-        doCallRealMethod().when(mockBinaryService).purgeContent(any(), any());
-        doCallRealMethod().when(mockResolver).setContent(any(), any(), any());
-        when(mockResolver.getContent(eq(partition), any())).thenReturn(of(mockInputStream));
-        when(mockResolver.exists(eq(partition), eq(identifier))).thenReturn(true);
+        doCallRealMethod().when(mockBinaryService).getContent(any());
+        doCallRealMethod().when(mockBinaryService).setContent(any(), any(), any());
+        doCallRealMethod().when(mockBinaryService).setContent(any(), any());
+        doCallRealMethod().when(mockBinaryService).exists(any());
+        doCallRealMethod().when(mockBinaryService).calculateDigest(any(), any());
+        doCallRealMethod().when(mockBinaryService).purgeContent(any());
+        doCallRealMethod().when(mockResolver).setContent(any(), any());
+        when(mockResolver.getContent(any())).thenReturn(of(mockInputStream));
+        when(mockResolver.exists(eq(identifier))).thenReturn(true);
         when(mockBinaryService.getResolver(any())).thenReturn(of(mockResolver));
         when(mockBinaryService.digest(any(), any())).thenReturn(of(checksum));
-        doNothing().when(mockResolver).setContent(eq(partition), any(), any(), any());
-        doNothing().when(mockResolver).purgeContent(eq(partition), any());
+        doNothing().when(mockResolver).setContent(any(), any(), any());
+        doNothing().when(mockResolver).purgeContent(any());
     }
 
     @Test
     public void testDefaultMethods() {
         final Map<String, String> data = emptyMap();
         assertEquals(of(mockResolver), mockBinaryService.getResolver(identifier));
-        assertEquals(of(mockInputStream), mockBinaryService.getContent(partition, identifier));
-        assertTrue(mockBinaryService.exists(partition, identifier));
-        assertFalse(mockBinaryService.exists(partition, other));
-        mockBinaryService.setContent(partition, identifier, mockInputStream, data);
-        mockBinaryService.setContent(partition, identifier, mockInputStream);
-        mockBinaryService.purgeContent(partition, identifier);
-        assertTrue(mockBinaryService.getContent(partition, other).isPresent());
-        assertEquals(of(checksum), mockBinaryService.calculateDigest(partition, other, "md5"));
-        verify(mockResolver, times(2)).setContent(eq(partition), eq(identifier), eq(mockInputStream), eq(data));
-        verify(mockResolver).purgeContent(eq(partition), eq(identifier));
+        assertEquals(of(mockInputStream), mockBinaryService.getContent(identifier));
+        assertTrue(mockBinaryService.exists(identifier));
+        assertFalse(mockBinaryService.exists(other));
+        mockBinaryService.setContent(identifier, mockInputStream, data);
+        mockBinaryService.setContent(identifier, mockInputStream);
+        mockBinaryService.purgeContent(identifier);
+        assertTrue(mockBinaryService.getContent(other).isPresent());
+        assertEquals(of(checksum), mockBinaryService.calculateDigest(other, "md5"));
+        verify(mockResolver, times(2)).setContent(eq(identifier), eq(mockInputStream), eq(data));
+        verify(mockResolver).purgeContent(eq(identifier));
     }
 
     @Test

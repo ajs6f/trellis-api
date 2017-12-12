@@ -100,45 +100,40 @@ public interface BinaryService {
 
         /**
          * Get the content of the binary object
-         * @param partition the partition to use
          * @param identifier the identifier
          * @return the content of the binary object
          */
-        Optional<InputStream> getContent(String partition, IRI identifier);
+        Optional<InputStream> getContent(IRI identifier);
 
         /**
          * Check whether the binary object exists
-         * @param partition the partition to use
          * @param identifier the identifier
          * @return whether the binary object exists
          */
-        Boolean exists(String partition, IRI identifier);
+        Boolean exists(IRI identifier);
 
         /**
          * Set the content of the binary object
-         * @param partition the partition to use
          * @param identifier the identifier
          * @param stream the stream
          */
-        default void setContent(String partition, IRI identifier, InputStream stream) {
-            setContent(partition, identifier, stream, emptyMap());
+        default void setContent(IRI identifier, InputStream stream) {
+            setContent(identifier, stream, emptyMap());
         }
 
         /**
          * Set the content of the binary object
-         * @param partition the partition to use
          * @param identifier the identifier
          * @param stream the content
          * @param metadata any user metadata
          */
-        void setContent(String partition, IRI identifier, InputStream stream, Map<String, String> metadata);
+        void setContent(IRI identifier, InputStream stream, Map<String, String> metadata);
 
         /**
          * Remove the content from the datastore
-         * @param partition the partition to use
          * @param identifier the identifier
          */
-        void purgeContent(String partition, IRI identifier);
+        void purgeContent(IRI identifier);
 
         /**
          * Test whether the resolver supports multipart uploads
@@ -148,12 +143,11 @@ public interface BinaryService {
 
         /**
          * Initiate a multi-part upload
-         * @param partition the partition
          * @param identifier the object identifier
          * @param mimeType the mimeType of the object
          * @return an upload session identifier
          */
-        String initiateUpload(String partition, IRI identifier, String mimeType);
+        String initiateUpload(IRI identifier, String mimeType);
 
         /**
          * Upload a part
@@ -195,57 +189,51 @@ public interface BinaryService {
 
     /**
      * Get the content of the binary object
-     * @param partition the partition to use
      * @param identifier an identifier used for locating the binary object
      * @return the content
      */
-    default Optional<InputStream> getContent(String partition, IRI identifier) {
-        return getResolver(identifier).flatMap(resolver -> resolver.getContent(partition, identifier));
+    default Optional<InputStream> getContent(IRI identifier) {
+        return getResolver(identifier).flatMap(resolver -> resolver.getContent(identifier));
     }
 
     /**
      * Test whether a binary object exists at the given URI
-     * @param partition the partition to use
      * @param identifier the binary object identifier
      * @return whether the binary object exists
      */
-    default Boolean exists(String partition, IRI identifier) {
-        return getResolver(identifier).map(resolver -> resolver.exists(partition, identifier)).orElse(false);
+    default Boolean exists(IRI identifier) {
+        return getResolver(identifier).map(resolver -> resolver.exists(identifier)).orElse(false);
     }
 
     /**
      * Set the content for a binary object
-     * @param partition the partition to use
      * @param identifier the binary object identifier
      * @param stream the content
      */
-    default void setContent(String partition, IRI identifier, InputStream stream) {
-        getResolver(identifier).ifPresent(resolver -> resolver.setContent(partition, identifier, stream));
+    default void setContent(IRI identifier, InputStream stream) {
+        getResolver(identifier).ifPresent(resolver -> resolver.setContent(identifier, stream));
     }
 
     /**
      * Set the content for a binary object
-     * @param partition the partition to use
      * @param identifier the binary object identifier
      * @param stream the content
      * @param metadata any user metadata
      */
-    default void setContent(String partition, IRI identifier, InputStream stream, Map<String, String> metadata) {
-        getResolver(identifier).ifPresent(resolver -> resolver.setContent(partition, identifier, stream, metadata));
+    default void setContent(IRI identifier, InputStream stream, Map<String, String> metadata) {
+        getResolver(identifier).ifPresent(resolver -> resolver.setContent(identifier, stream, metadata));
     }
 
     /**
      * Purge the content from its corresponding datastore
-     * @param partition the partition to use
      * @param identifier the binary object identifier
      */
-    default void purgeContent(String partition, IRI identifier) {
-        getResolver(identifier).ifPresent(resolver -> resolver.purgeContent(partition, identifier));
+    default void purgeContent(IRI identifier) {
+        getResolver(identifier).ifPresent(resolver -> resolver.purgeContent(identifier));
     }
 
     /**
      * Calculate the digest for a binary object
-     * @param partition the partition to use
      * @param identifier the identifier
      * @param algorithm the algorithm
      * @return the digest
@@ -254,8 +242,8 @@ public interface BinaryService {
      * not just the HTTP payload.</p>
      *
      */
-    default Optional<String> calculateDigest(String partition, IRI identifier, String algorithm) {
-        return getContent(partition, identifier).flatMap(stream -> digest(algorithm, stream));
+    default Optional<String> calculateDigest(IRI identifier, String algorithm) {
+        return getContent(identifier).flatMap(stream -> digest(algorithm, stream));
     }
 
     /**
@@ -272,13 +260,6 @@ public interface BinaryService {
     Optional<Resolver> getResolver(IRI identifier);
 
     /**
-     * Get the default resolver for the given partition
-     * @param partition the partition name
-     * @return a binary object resolver
-     */
-    Optional<Resolver> getResolverForPartition(String partition);
-
-    /**
      * Get the digest for an input stream
      * @param algorithm the algorithm to use
      * @param stream the input stream
@@ -291,8 +272,7 @@ public interface BinaryService {
 
     /**
      * An identifier supplier
-     * @param partition the partition to use
      * @return a supplier of identifiers for new resources
      */
-    Supplier<String> getIdentifierSupplier(String partition);
+    Supplier<String> getIdentifierSupplier();
 }

@@ -68,11 +68,11 @@ public class ResourceServiceTest {
         doCallRealMethod().when(mockResourceService).skolemize(any());
         doCallRealMethod().when(mockResourceService).unskolemize(any());
         doCallRealMethod().when(mockResourceService).getContainer(any());
-        doCallRealMethod().when(mockResourceService).export(any(), any());
+        doCallRealMethod().when(mockResourceService).export(any());
         doCallRealMethod().when(mockResourceService).toInternal(any(), any());
         doCallRealMethod().when(mockResourceService).toExternal(any(), any());
 
-        when(mockResourceService.scan(any())).thenAnswer(inv ->
+        when(mockResourceService.scan()).thenAnswer(inv ->
             asList(rdf.createTriple(existing, type, LDP.Container)).stream());
     }
 
@@ -104,8 +104,7 @@ public class ResourceServiceTest {
                 Stream.of(rdf.createTriple(existing, DC.title, rdf.createLiteral("A title"))));
         when(mockResourceService.get(eq(existing))).thenReturn(of(mockResource));
 
-        final String partition = "repository";
-        final List<Quad> export = mockResourceService.export(partition, graphs).collect(toList());
+        final List<Quad> export = mockResourceService.export(graphs).collect(toList());
         assertEquals(1L, export.size());
         assertEquals(of(existing), export.get(0).getGraphName());
         assertEquals(existing, export.get(0).getSubject());
